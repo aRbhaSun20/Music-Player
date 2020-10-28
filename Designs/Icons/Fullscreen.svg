@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icon_Fullscreen_Sharp" data-name="Icon / Fullscreen / Sharp" clip-path="url(#clip-path)">
+    <path id="Path_1988" data-name="Path 1988" d="M727-58h-2v5h5v-2h-3Zm-2-4h2v-3h3v-2h-5Zm12,7h-3v2h5v-5h-2Zm-3-12v2h3v3h2v-5Z" transform="translate(-720 72)"/>
+    <rect id="Box" width="24" height="24" fill="none"/>
+  </g>
+</svg>
