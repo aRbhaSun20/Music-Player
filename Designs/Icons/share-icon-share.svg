@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="29" viewBox="0 0 29 29">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="21" height="21" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="share-icon-share" transform="translate(-341 -237)">
+    <g id="Ellipse_38" data-name="Ellipse 38" transform="translate(341 237)" fill="none" stroke="red" stroke-width="1">
+      <circle cx="14.5" cy="14.5" r="14.5" stroke="none"/>
+      <circle cx="14.5" cy="14.5" r="14" fill="none"/>
+    </g>
+    <g id="Icon_Share_Sharp" data-name="Icon / Share / Sharp" transform="translate(345 241)" clip-path="url(#clip-path)">
+      <rect id="Box" width="21" height="21" fill="none"/>
+      <path id="Path_412" data-name="Path 412" d="M824.5-1404.041a2.4,2.4,0,0,0-1.633.654l-5.942-3.525a2.825,2.825,0,0,0,.075-.594,2.827,2.827,0,0,0-.075-.595l5.875-3.491a2.464,2.464,0,0,0,1.7.688,2.521,2.521,0,0,0,2.5-2.548,2.521,2.521,0,0,0-2.5-2.548,2.521,2.521,0,0,0-2.5,2.548,2.825,2.825,0,0,0,.075.594l-5.875,3.491a2.464,2.464,0,0,0-1.7-.688,2.521,2.521,0,0,0-2.5,2.548,2.521,2.521,0,0,0,2.5,2.548,2.464,2.464,0,0,0,1.7-.688l5.933,3.534a2.439,2.439,0,0,0-.067.552,2.46,2.46,0,0,0,2.433,2.48,2.46,2.46,0,0,0,2.433-2.48A2.46,2.46,0,0,0,824.5-1404.041Z" transform="translate(-809 1418)" fill="red"/>
+    </g>
+  </g>
+</svg>

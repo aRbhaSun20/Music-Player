@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style2.css" />
+    <link
+      rel="stylesheet"
+      href="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css"
+    />
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <script src="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/popper.min.js"></script>
+    <script src="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <title>Mini</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="nav-bar">
+        <nav class="nav-bar navbar-light fixed-top">
+          <div class="title">
+            <a href="#"><img src="./Icons/Burger.svg" alt="Burger" /></a>
+            <h2>Music</h2>
+          </div>
+          <div class="search-bar">
+            <img
+              src="./Icons/Search-Icon.svg"
+              class="Search-icon"
+              alt=""
+              onclick=""
+            />
+            <input type="text" placeholder="Search for songs, artist, etc." />
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="#"
+                ><img
+                  class="nav-icons"
+                  src="./Icons/Shop.svg"
+                  alt="Shop"
+                  onclick=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="./Icons/settings.svg" alt="Settings" onclick=""
+              /></a>
+            </li>
+            <li>
+              <div class="dropdown">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                ><a href="#" class="main-menu-list">
+                  <img
+                  class="nav-icons"
+                  src="./Icons/share.svg"
+                  alt="Share"
+                  onclick=""
+              /></button
+                >
+                </a>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                  id="share-drop-menu"
+                >
+                  <div class="dropdown-item-list-icon" id="dropdown-icon-share">
+                    
+                    <a class="dropdown-item" href="#"><img src="./Icons/google-icon.svg" alt=""></a>
+                  </div>
+                  <div class="dropdown-item-list-icon" id="dropdown-icon-share">
+                   
+                    <a class="dropdown-item" href="#"><img src="./Icons/facebook-icon.svg" alt=""></a>
+                  </div>
+                  <div class="dropdown-item-list-icon" id="dropdown-icon-share">
+                    
+                    <a class="dropdown-item" href="#"><img src="./Icons/gmail-icon.svg" alt=""></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="#"
+                ><img
+                  class="nav-icons"
+                  src="./Icons/contact.svg"
+                  alt="User"
+                  onclick=""
+              /></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <section class="page1">
+        <div class="page-section">
+          <div class="main-song-lists">
+            <div class="song">
+              <div class="song-detail">
+                <img class="close-icon" src="./Icons/close.svg" alt="" />
+                <div class="song-name">Recent Song</div>
+                <div class="Artist">Recent Artist</div>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+            <div class="song">
+              <div class="song-detail">
+                <img src="./Icons/close.svg" alt="" />
+                <div class="song-name">Recent Song</div>
+                <div class="Artist">Recent Artist</div>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+            <div class="song">
+              <div class="song-detail">
+                <img src="./Icons/close.svg" alt="" />
+                <div class="song-name">Recent Song</div>
+                <div class="Artist">Recent Artist</div>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+            <div class="song">
+              <div class="song-detail">
+                <img src="./Icons/close.svg" alt="" />
+                <div class="song-name">Recent Song</div>
+                <div class="Artist">Recent Artist</div>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+            <div class="song">
+              <div class="song-detail">
+                <img src="./Icons/close.svg" alt="" />
+                <div class="song-name">Recent Song</div>
+                <div class="Artist">Recent Artist</div>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main-menu">
+          <div class="main-menu-bottom fixed-bottom">
+            <ul class="bottom-main-menu">
+              <li>
+                <div class="">
+                  <img
+                    src="./Icons/Home.svg"
+                    class="bottom-main-menu-icons"
+                    alt=""
+                  /><a href="#" class="main-menu-list">My Music</a>
+                </div>
+              </li>
+              <li>
+                <div class="">
+                  <img
+                    src="./Icons/Search-icon-small.svg"
+                    class="bottom-main-menu-icons"
+                    alt=""
+                  /><a href="#" class="main-menu-list">Browse</a>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      class="bottom-main-menu-icons"
+                      src="./Icons/Arrow-Down.svg"
+                    />
+                  </button>
+                  <a href="#" class="main-menu-list">Now Playing</a>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      class="bottom-main-menu-icons"
+                      src="./Icons/Arrow-Down.svg"
+                    /></button
+                  ><a href="#" class="main-menu-list">Your Library</a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <div class="dropdown-item-list-icon" id="dropdown-icon">
+                      <img src="./Icons/Recent-icon.svg" alt="" />
+                      <a class="dropdown-item" href="#">Recently Played</a>
+                    </div>
+                    <div class="dropdown-item-list-icon" id="dropdown-icon">
+                      <img src="./Icons/Favourite1.svg" alt="" />
+                      <a class="dropdown-item" href="#">Favourite Songs</a>
+                    </div>
+                    <div class="dropdown-item-list-icon" id="dropdown-icon">
+                      <img src="./Icons/Artist.svg" alt="" />
+                      <a class="dropdown-item" href="#">Artist</a>
+                    </div>
+                    <div class="dropdown-item-list-icon" id="dropdown-icon">
+                      <img src="./Icons/Library2.svg" alt="" />
+                      <a class="dropdown-item" href="#">Album</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      class="bottom-main-menu-icons"
+                      src="./Icons/Arrow-Down.svg"
+                    /></button
+                  ><a href="#" class="main-menu-list">Playlist</a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a class="dropdown-item" href="#">Top IndiPop</a>
+                    <a class="dropdown-item" href="#">Hindi Top</a>
+                    <a class="dropdown-item" href="#">Pop Songs</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="bottom-bar fixed-bottom">
+        <div class="playlist-details">
+          <div class="album-song">
+            <img
+              class="song-playing-album"
+              src="./Icons/Song Playing.svg"
+              alt=""
+            />
+            <div class="song-details">
+              <div class="song">INSECURE</div>
+              <div class="song-artist">Artist</div>
+            </div>
+            <div class="rythm-buttons">
+              <img
+                src="./icons/previous-button.svg"
+                alt=""
+                class="previous-button"
+              />
+              <img
+                src="./icons/play-pause-button.svg"
+                alt=""
+                class="play_pause-button"
+              />
+              <img src="./icons/next-button.svg" alt="" class="next-button" />
+            </div>
+            <div class="song-timeline">
+              <div class="current-timeline">1:15</div>
+              <div class="timeline-line"></div>
+              <div class="play-line"></div>
+              <img
+                src="./Icons/play-button-motion.svg"
+                alt=""
+                class="play-button-motion"
+              />
+              <!-- start left 3em end 33em -->
+              <div class="complete-timeline">05:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-bar fixed-bottom">
+          <div class="playlist-details">
+            <div class="album-song">
+              <img
+                class="song-playing-album"
+                src="./Icons/Song Playing.svg"
+                alt=""
+              />
+              <div class="song-details">
+                <div class="song">INSECURE</div>
+                <div class="song-artist">Artist</div>
+              </div>
+              <div class="rythm-buttons">
+                <img
+                  src="./icons/previous-button.svg"
+                  alt=""
+                  class="previous-button"
+                />
+                <img
+                  src="./icons/play-pause-button.svg"
+                  alt=""
+                  class="play_pause-button"
+                />
+                <img src="./icons/next-button.svg" alt="" class="next-button" />
+              </div>
+              <div class="song-timeline">
+                <div class="current-timeline">1:15</div>
+                <div class="timeline-line"></div>
+                <div class="play-line"></div>
+                <img
+                  src="./Icons/play-button-motion.svg"
+                  alt=""
+                  class="play-button-motion"
+                />
+                <!-- start left 3em end 33em -->
+                <div class="complete-timeline">05:00</div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-icons">
+            <ul class="bottom-links">
+              <div class=""></div>
+              <li>
+                <a href="#"
+                  ><img src="./Icons/Favourite.svg" alt="Favourite" onclick=""
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    class="bottom-bar-icons"
+                    src="./Icons/Thumbs-up.svg"
+                    alt="Thumbs-up"
+                    onclick=""
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    class="bottom-bar-icons"
+                    src="./Icons/Thumbs-down.svg"
+                    alt="Thumbs-down"
+                    onclick=""
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    class="bottom-bar-icons"
+                    src="./Icons/repeat.svg"
+                    alt="Repeat"
+                    onclick=""
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    class="bottom-bar-icons"
+                    src="./Icons/Library.svg"
+                    alt="Library"
+                    onclick=""
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    class="bottom-bar-icons"
+                    src="./Icons/Fullscreen.svg"
+                    alt="Fullscreen"
+                    onclick=""
+                /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

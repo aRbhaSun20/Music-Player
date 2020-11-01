@@ -1,0 +1,361 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+.nav-bar {
+  /* position: fixed; */
+  justify-content: space-evenly;
+  align-items: center;
+}
+nav {
+  /* opacity: 0; */
+  height: 10vh;
+}
+
+.title {
+  display: flex;
+  position: absolute;
+  top: 1em;
+  left: 2em;
+  text-decoration: none;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title h2 {
+  font-size: 30px;
+  margin-left: 1em;
+  color: #01ff01;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  width: 25%;
+
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+}
+
+.title a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.nav-icons {
+  transform: scale(0.9);
+}
+
+div.main {
+  background: repeating-linear-gradient(45deg, #0b0438, #100c2e, #090341);
+}
+
+.name {
+  color: #01ff01;
+}
+
+.search-bar {
+  transform: scale(0.8);
+  position: absolute;
+  display: flex;
+  top: 5em;
+  left: 35%;
+  min-width: 500px;
+  min-height: 40px;
+  background-color: #170c57;
+}
+.search-bar input {
+  left: 4.5em;
+  position: absolute;
+  display: flex;
+  background: none;
+  border: none;
+  border-color: none;
+  opacity: 0.6;
+  min-width: 425px;
+  min-height: 40px;
+  color: white;
+  outline: none;
+}
+.Search-icon {
+  transform: scale(0.8);
+  z-index: 3;
+  left: 1em;
+  top: 0.5em;
+  position: absolute;
+}
+.current-song-playing {
+  /* opacity: 0; */
+  min-height: 3.5em;
+  min-width: 100%;
+  /* position: absolute; */
+  list-style: none;
+  display: grid;
+  grid-template-columns: 10% 1fr 5% 2fr;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+  position: absolute;
+  /* background-color: rgb(0, 0, 0); */
+}
+.bottom-icons {
+  padding-top: 11.5em;
+  transform: scale(0.9);
+  grid-column: 4/5;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bottom-bar-icons {
+  margin-right: 10px;
+}
+.current-song-playing li {
+  display: contents;
+  list-style: none;
+  margin-right: auto;
+}
+
+.current-song-playing li a {
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 2.5em;
+}
+
+section {
+  padding-top: 4em;
+  min-height: 200vh;
+  min-width: 100%;
+}
+
+.main-menu-bottom {
+  background: linear-gradient(80deg, #130e38, #100b31, #16042a);
+  text-decoration: none;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-menu-bottom ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.main-menu-bottom li {
+  list-style: none;
+}
+
+.main-menu-bottom li a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  justify-self: center;
+  align-self: center;
+}
+
+a.main-menu-list {
+  color: #9896a5;
+  font-family: Georgia;
+  text-align: center;
+}
+.main-menu-bottom li a:hover {
+  color: #9896a5;
+}
+img.bottom-main-menu-icons {
+  transform: scale(1.2);
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-bottom: 5px;
+  /* transform: scale(1.5); */
+  cursor: pointer;
+}
+button#dropdownMenuButton {
+  justify-content: center;
+  align-items: center;
+  border-color: none;
+  max-width: 60px;
+  max-height: 35px;
+  outline: none;
+}
+button.dropdown-toggle {
+  outline: none;
+}
+.main-song-lists .song .song-details{
+max-width: 60em;
+margin-left: 15em;
+justify-content: space-evenly;
+align-items: stretch;
+background: rgba(255, 255, 255, 0.034);
+}
+.main-song-lists .song{
+  
+}
+div.dropdown-menu {
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+div.dropdown-menu a {
+  color: #bcbcbc;
+  opacity: 0.7;
+}
+div.dropdown-item-list-icon {
+  transform: scale(0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+img.Playlist-add {
+  margin-left: 35px;
+}
+div.Album-Image-Section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+.feature-section {
+  padding-top: 1.5em;
+  padding-left: 6.5em;
+}
+.feature-section h3 {
+  font-size: 22px;
+  font-family: "Lucida Sans";
+  color: #01ff01;
+}
+
+.feature-section h4 {
+  font-size: 18px;
+  font-family: "Lucida Sans";
+  color: #bcbcbc;
+  opacity: 0.5;
+}
+.main-song-lists {
+  position: relative;
+  margin-top: 4em;
+  top: 15em;
+
+}
+.close-icon {
+  z-index: 1;
+}
+.song-details {
+  min-width: 20em;
+  padding-bottom: 12px;
+  padding-top: 20px;
+  color: #b0aeae;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.divider-line {
+  opacity: 0.4;
+  margin-left: 20em;
+  padding-top: 10px;
+  width: 53.5%;
+  border-bottom: 1px solid rgb(134, 134, 134);
+}
+.album-song {
+  display: flex;
+  color: black;
+  position: absolute;
+  top: 1px;
+}
+.song-details .song {
+  position: absolute;
+  top: -5px;
+  left: 7em;
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+}
+.song-artist {
+  position: absolute;
+  top: 2.3em;
+  left: 13.13em;
+  font-size: 15px;
+  color: #7b7b7b;
+  opacity: 0.9;
+}
+.song-album {
+  font-size: 15px;
+  position: absolute;
+  top: 3.8em;
+  left: 13.13em;
+  color: #7b7b7b;
+  opacity: 0.9;
+}
+.song-playing-album {
+  transform: scale(1.4);
+  margin-left: 3.5em;
+  padding-top: px;
+}
+.album-song {
+  padding-left: 2em;
+}
+.album-song .song-details {
+  padding-left: 1.5em;
+}
+.album-song .song-details .song {
+  padding-right: 1em;
+}
+.song-timeline {
+  position: absolute;
+  display: flex;
+  top: 8em;
+  left: 11em;
+  justify-content: space-around;
+  align-items: center;
+}
+.rythm-buttons {
+  position: absolute;
+  display: flex;
+  min-width: 15em;
+  margin-left: 5.5em;
+  margin-top: 11.5em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.complete-timeline, .current-timeline{
+  color: #919191;
+}
+div.timeline-line {
+  opacity: 0.7;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  /* margin-left: 5%;
+  padding-top: -10px; */
+  width: 60em;
+  border-bottom: 1px solid #7b6161;
+}
+div.play-line {
+  /* opacity: 0.7; */
+  position: absolute;
+  top: 0.6em;
+  display: flex;
+  left: 3.34em;
+
+  /* margin-left: 5%;
+  padding-top: -10px; */
+  width: 10em;
+  border-bottom: 5px solid #1f8e1f;
+}
+img.play-button-motion {
+  position: absolute;
+  top: 0.2em;
+  left: 13em;
+  transform: scale(2);
+}
+#dropdown-icon-share{
+  height: 4em;
+  /* display: flex; */
+}

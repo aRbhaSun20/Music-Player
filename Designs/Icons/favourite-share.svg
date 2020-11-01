@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="29" viewBox="0 0 29 29">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="21" height="21" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="favourite-share" transform="translate(-421 -237)">
+    <g id="Group_103" data-name="Group 103">
+      <g id="Ellipse_42" data-name="Ellipse 42" transform="translate(421 237)" fill="none" stroke="red" stroke-width="1">
+        <circle cx="14.5" cy="14.5" r="14.5" stroke="none"/>
+        <circle cx="14.5" cy="14.5" r="14" fill="none"/>
+      </g>
+    </g>
+    <g id="Icon_Favorite_Sharp" data-name="Icon / Favorite / Sharp" transform="translate(425 242)" clip-path="url(#clip-path)">
+      <rect id="Box" width="21" height="21" fill="none"/>
+      <path id="Path_407" data-name="Path 407" d="M867.5-1399.65l-1.233-1.1c-4.377-3.906-7.267-6.483-7.267-9.645a4.593,4.593,0,0,1,4.675-4.6,5.124,5.124,0,0,1,3.825,1.748,5.124,5.124,0,0,1,3.825-1.748,4.593,4.593,0,0,1,4.675,4.6c0,3.162-2.89,5.739-7.267,9.653Z" transform="translate(-857 1418)" fill="red"/>
+    </g>
+  </g>
+</svg>
