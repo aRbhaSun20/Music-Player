@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icon_Arrow_Drop_Down_Sharp" data-name="Icon / Arrow Drop Down / Sharp" clip-path="url(#clip-path)">
+    <rect id="Box" width="24" height="24" fill="none"/>
+    <path id="Icon_Arrow_Drop_Down" data-name="Icon / Arrow Drop Down" d="M111-20l5,5,5-5Z" transform="translate(-104 30)" fill="#7d7a91" opacity="0.995"/>
+  </g>
+</svg>

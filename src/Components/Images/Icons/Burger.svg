@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="Icon_Menu_Sharp" data-name="Icon / Menu / Sharp" class="cls-2">
+    <rect id="Box" class="cls-1" width="24" height="24"/>
+    <path id="Path_417" data-name="Path 417" class="cls-3" d="M604-1400h18v-2H604Zm0-5h18v-2H604Zm0-7v2h18v-2Z" transform="translate(-601 1418)"/>
+  </g>
+</svg>

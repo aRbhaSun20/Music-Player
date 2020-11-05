@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+  <g id="playlist-share" transform="translate(-260 -237)">
+    <g id="Ellipse_37" data-name="Ellipse 37" transform="translate(260 237)" fill="none" stroke="red" stroke-width="1">
+      <circle cx="14.5" cy="14.5" r="14.5" stroke="none"/>
+      <circle cx="14.5" cy="14.5" r="14" fill="none"/>
+    </g>
+    <path id="Path_2014" data-name="Path 2014" d="M98.016,0H87.145a1.811,1.811,0,0,0-1.812,1.812V12.683a1.811,1.811,0,0,0,1.812,1.812H98.016a1.811,1.811,0,0,0,1.812-1.812V1.812A1.811,1.811,0,0,0,98.016,0ZM96.2,4.53H93.486V9.512a2.283,2.283,0,1,1-.906-1.8V2.718H96.2Z" transform="translate(181.84 244)" fill="red"/>
+  </g>
+</svg>

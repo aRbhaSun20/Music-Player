@@ -1,0 +1,38 @@
+.browse .main-song-lists {
+  margin-top: 6em;
+}
+
+.browse .close-icon {
+  z-index: 1;
+}
+
+.browse .song-details {
+  margin-left: 30%;
+  max-width: 40em;
+  opacity: 0.9;
+  padding-bottom: 12px;
+  padding-top: 1.5em;
+  color: #B0AEAE;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.browse .divider-line {
+  opacity: 0.6;
+  margin-left: 25%;
+  padding-top: 10px;
+  width: 45%;
+  border-bottom: 1px solid rgb(134, 134, 134);
+}
+
+.browse .album-song {
+  display: flex;
+  color: black;
+  position: absolute;
+  top: 1px;
+}
+
+.browse .search-bar {
+  margin-top: 2.5em;
+}
