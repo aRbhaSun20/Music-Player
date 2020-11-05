@@ -1,4 +1,4 @@
-# Login System
+# Music System
 The Current Repository is responsible for Web Based Music Player,with all Functionality of common players and the recordsincluding the history are later updated to the Connected *DataBase* with the aid of *BackEnd* from the **Server_Repo**.
 
 ---
