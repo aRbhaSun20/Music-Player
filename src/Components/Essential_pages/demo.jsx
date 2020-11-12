@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+// import React  from 'react';
+// import { useLocation } from "react-router-dom";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// const Demo = () => {
+//     let location = useLocation()
+//     return (
+//        console.log(location)
+//     );
+// }
 
-class Demo extends Component {
-    render() {
-        return (
-            <div>
-               
-
-            </div>
-        );
-    }
-}
-
-export default Demo;
+// export default demo;
 
 

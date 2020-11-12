@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Song from "./Song";
 import AlbumSection from "./AlbumSection";
 
@@ -8,12 +7,13 @@ import "../Styles/style.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import playlist_icon from "../Images/Icons/Playlist.png";
-import song_album_list from "../Images/Icons/Songs-Album-list.png";
+
 import play_previous_icon from "../Images/Icons/PLay-Previous-big.svg";
 import play_next_big_icon from "../Images/Icons/Play-Next-big.svg";
 
 class Home extends Component {
 	state = {};
+
 	render() {
 		return (
 			<div className="">
@@ -33,7 +33,11 @@ class Home extends Component {
 							data-slide="prev"
 							className="carousel-control-prev"
 						>
-							<img src={play_previous_icon} alt="previous-icon" aria-hidden="true"/>
+							<img
+								src={play_previous_icon}
+								alt="previous-icon"
+								aria-hidden="true"
+							/>
 							<span className="sr-only">Previous</span>
 						</a>
 						<a
@@ -42,7 +46,11 @@ class Home extends Component {
 							data-slide="next"
 							className="carousel-control-next"
 						>
-							<img src={play_next_big_icon} alt="next-icon"  aria-hidden="true" />
+							<img
+								src={play_next_big_icon}
+								alt="next-icon"
+								aria-hidden="true"
+							/>
 							<span className="sr-only">Next</span>
 						</a>
 					</div>
@@ -51,8 +59,13 @@ class Home extends Component {
 						<h4 className="this-week">this week</h4>
 					</div>
 					<div className="main-song-lists">
-						<Song />
-						<Song />
+						{this.props.musicalData.map((Songdata, index) => {
+							return (
+								<div key={index}>
+									<Song Songdata={Songdata} />
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</div>

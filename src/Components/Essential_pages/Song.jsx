@@ -11,12 +11,14 @@ class Song extends Component {
 			<div className="song">
 				<div className="song-details">
 					<img className="close-icon" src={close_icon} alt="close" />
-					<div className="song-name">Song Name</div>
-					<div className="Artist">Artist</div>
-					<div className="Album">Album</div>
-					<div className="Duration">05:00</div>
+					<div className="song-name">{this.props.Songdata.Song.song_name}</div>
+					<div className="Artist">{this.props.Songdata.Artist.artist_name}</div>
+					<div className="Album">{this.props.Songdata.Album.album_name}</div>
+					<div className="Duration">
+						{this.props.Songdata.features.duration}
+					</div>
 				</div>
-				<div className="divider-line" />
+				{/* <div className="divider-line" /> */}
 			</div>
 		);
 	}

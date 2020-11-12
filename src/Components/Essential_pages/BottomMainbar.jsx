@@ -13,31 +13,50 @@ import artist_icon from "../Images/Icons/Artist.svg";
 import library2_icon from "../Images/Icons/Library2.svg";
 
 class BottomMainbar extends Component {
+	
+	nowPlaying = () =>  {
+		console.log("not clicked");
+		this.props.nowPlaying(true);
+	}
+
+	clickedme = () => {
+		console.log("clickeme");
+		this.props.nowPlaying(false);
+	}
+
 	render() {
 		return (
 			<div className="main-menu">
 				<div className="main-menu-bottom fixed-bottom">
 					<ul className="bottom-main-menu">
 						<li>
-							<div className="-link active">
+							<div>
 								<img
 									src={Home_icon}
 									className="bottom-main-menu-icons"
 									alt="bottom-main-menu-icons"
 								/>
-								<Link to="/" className="main-menu-list">
+								<Link
+									to="/"
+									onClick={this.clickedme}
+									className="main-menu-list"
+								>
 									My Music
 								</Link>
 							</div>
 						</li>
 						<li>
-							<div className>
+							<div className="browse-icon-div">
 								<img
 									src={search_icon_sm}
 									className="bottom-main-menu-icons"
 									alt="bottom-main-menu-icons"
 								/>
-								<Link to="/browse" className="main-menu-list">
+								<Link
+									to="/browse"
+									onClick={this.clickedme}
+									className="main-menu-list"
+								>
 									Browse
 								</Link>
 							</div>
@@ -58,7 +77,11 @@ class BottomMainbar extends Component {
 										src={arrow_down}
 									/>
 								</button>
-								<Link to="now_playing" className="main-menu-list">
+								<Link
+									to="now_playing"
+									onClick={this.nowPlaying}
+									className="main-menu-list"
+								>
 									Now Playing
 								</Link>
 							</div>
@@ -79,7 +102,11 @@ class BottomMainbar extends Component {
 										src={arrow_down}
 									/>
 								</button>
-								<Link to="/now_playing" className="main-menu-list">
+								<Link
+									to="/now_playing"
+									onClick={this.nowPlaying}
+									className="main-menu-list"
+								>
 									Your Library
 								</Link>
 								<div
@@ -129,7 +156,11 @@ class BottomMainbar extends Component {
 										src={arrow_down}
 									/>
 								</button>
-								<Link to="/" className="main-menu-list">
+								<Link
+									to="/"
+									onClick={this.clickedme}
+									className="main-menu-list"
+								>
 									Playlist
 								</Link>
 								<div

@@ -21,36 +21,26 @@ body {
 
 nav {
   /* opacity: 0; */
-  height: 8vh;
+  height: 10vh;
 }
 
 .title {
   display: flex;
   position: absolute;
-  top: 1em;
-  left: 2em;
+  top: 3em;
+  left: 4.6em;
   text-decoration: none;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .title h2 {
-  top: -0.5vh;
-  left: 1vh;
-
   position: absolute;
-  font-size: 30px;
+  font-size: 50px;
   margin-left: 1em;
   color: #01ff01;
   cursor: pointer;
   transition: 0.1s font-size ease-out;
-}
-
-.title h2:hover {
-  left: -1vh;
-  top: -1.5vh;
-  font-size: 50px;
-  color: #b701ff;
 }
 
 .nav-links {
@@ -92,8 +82,8 @@ div.main {
   transform: scale();
   position: absolute;
   display: flex;
-  top: 1.75em;
-  left: 35%;
+  top: 3em;
+  left: 37%;
   min-width: 500px;
   min-height: 50px;
   background-color: #170c57;
@@ -253,9 +243,8 @@ div.dropdown-item-list-icon {
 }
 
 img.Playlist-add {
-
-  margin-left: 35px;
-  margin-top: 0px;
+  margin-left: 40px;
+  margin-top: 30px;
   scale: 1;
 }
 div.Album-Image-Section {
@@ -294,16 +283,19 @@ div.Album-Image-Section {
 .song-details {
   opacity: 0.9;
   scale: 1.1;
-  max-width: 60em;
+  width: 100em;
   height: 7vh;
+  padding: 0  30px;
   padding-bottom: 12px;
+  margin-bottom: 2.5em;
   padding-top: 20px;
+  
   color: #b0aeae;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 130vh;
-  margin-left: 30%;
+  margin-left: 18%;
   background: rgba(255, 255, 255, 0.034);
 }
 
@@ -345,13 +337,15 @@ div.Album-Image-Section {
 
 .song-details-bottom {
   opacity: 1;
-  max-width: 1vh;
-  margin-left: 5em;
+width: 5vh;
+  margin-left:5em;
 }
 
 .album-song-bottom .song-playing-album {
-  scale: 1.2;
-  padding-left: 3vh;
+  scale: 1.3;
+  /* padding-left: 1em; */
+  margin-left: 1em;
+  margin-bottom: -2em;
 }
 
 .album-song-bottom {
@@ -363,16 +357,29 @@ div.Album-Image-Section {
 }
 
 .album-song-bottom .song-details-bottom .song {
-  /* padding-right: em; */
+
+  position: absolute;
+  /* bottom: 0px; */
+  top: 6px;
+  left: 3.6em;
+  width: 10em;
+  right: 0;
   letter-spacing: 3px;
-  padding-left: 5vh;
-  font-size: 22px;
-  margin-right: 10px;
+  font-size: 20px;
+  padding-bottom: 1em;
+color: #292929; 
 }
 
-.album-song-bottom .song-details-bottom .song-artist {
-  font-size: 17px;
-  padding-top: 7px;
+.song-details-bottom .song-artist {
+  position: absolute;
+  min-width: 10em;
+  font-size: 15px;
+  padding-top: 3.5em;
+  right: 0;
+  left: 4.9em;
+  color: #414141cc;
+  /* opacity: 0; */
+
 
 }
 
@@ -390,17 +397,22 @@ div.Album-Image-Section {
 
 .rythm-buttons img {
   scale: 1.2;
+  cursor: pointer;
 }
 
 .motion-album {
-  /* opacity: 0; */
+  border-radius: 20px;
+  opacity: 1;
+  transition: opacity 1s ease-in;
+  object-fit: fit ;
   min-width: 70vh;
   min-height: 40vh;
   max-width: 70vh;
   max-height: 45vh;
 }
-
-
+.motion-album::before{
+  opacity: 0;
+}
 
 #dropdown-icon-share {
   height: 4em;
@@ -411,19 +423,32 @@ div.Album-Image-Section {
   scale: 1.2;
 }
 
-#player {
-  /* position: absolute; */
-  /* padding-left: 10%; */
-  /* top: 20%;
-  left: 18em; */
+.songunmodified audio{
+  position: absolute;
+  left: 10em;
+  bottom: -25px;
   scale: 1.05;
-  opacity: 0.2;
-  width: 5em;
-  transition: 1s width ease-in-out;
+  width: 55em;
   background-color: rgba(50, 52, 168, 0.657);
 }
 
-#player:hover {
+/* #player:hover {
   opacity: 0.8;
   width: 55em;
+} */
+
+.songmodified {
+  position: absolute;
+  display: flex;
+  left: 13em;
+  bottom: 36.5em;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.songmodified audio {
+  scale: 1.45;
+  width: 59em;
+  background: #1607bd;
+  opacity: 0.8;
 }

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import "../Styles/style.css";
 
-import Burger from "../Images/Icons/Burger.svg";
 import Search_Icon from "../Images/Icons/Search-Icon.svg";
 import Shop_icon from "../Images/Icons/Shop.svg";
 import Settings_Icon from "../Images/Icons/settings.svg";
@@ -21,9 +20,6 @@ class NavBar extends Component {
 			<div className="nav-bar">
 				<nav className="nav-bar navbar-light fixed-top">
 					<div className="title">
-						<Link to="/">
-							<img src={Burger} alt="Burger" />
-						</Link>
 						<h2>Music</h2>
 					</div>
 					<Link to="/browse">
@@ -45,7 +41,7 @@ class NavBar extends Component {
 						</li>
 						<li>
 							<Link to="/settings">
-								<img src={Settings_Icon} alt="Settings" onclick />
+								<img src={Settings_Icon} alt="Settings" />
 							</Link>
 						</li>
 						<li>
