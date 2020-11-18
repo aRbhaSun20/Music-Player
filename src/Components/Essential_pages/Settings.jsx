@@ -1,15 +1,27 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "../Styles/style5.css";
 
 class Settings extends Component {
 	state = {};
+
+	theme = false;
+
+	clickedme = () => {
+		this.theme = !this.theme;
+		this.props.changetheme(this.theme);
+	};
 	render() {
 		return (
 			<div className="settings-menu">
 				<div className="first-sections">
 					<div className="first-section">
 						<div className="heading">ACCOUNT</div>
+						<Link to="/signup">
+							<div className="texts">Login / SignUp Now</div>
+						</Link>
+
 						<div className="texts">Login Account</div>
 						<div className="subtext">bla bla @gmail.com</div>
 						<div className="texts">Music Directory</div>
@@ -18,7 +30,12 @@ class Settings extends Component {
 					</div>
 					<div className="second-section">
 						<div className="heading">GENERAL</div>
-						<div className="texts">Improve Your Recommendations</div>
+						<Link to="/preference">
+							<div className="texts" style={{ cursor: "pointer" }}>
+								Improve Your Recommendations
+							</div>
+						</Link>
+
 						<div className="subtext">choose your language here</div>
 						<div className="texts">Sleep Timer</div>
 						<div className="subtext">Set your countdown to stop MUSIC</div>
@@ -31,6 +48,7 @@ class Settings extends Component {
 						<div className="texts">Playback Speed</div>
 					</div>
 				</div>
+
 				<div className="second-sections">
 					<div className="first-section">
 						<div className="heading">PRIVACY</div>
@@ -46,6 +64,23 @@ class Settings extends Component {
 						<div className="texts">Privacy Policy</div>
 						<div className="texts">Technologies Used</div>
 						<div className="texts">Team Members Responsible</div>
+					</div>
+					<div className="third-section-below">
+						<div className="heading">SELECT THEME MODE</div>
+						<div className="slider-holder">
+							<label className="switch">
+								<input
+									defaultChecked
+									onClick={this.clickedme}
+									type="checkbox"
+									id="togBtn"
+								/>
+								<div className="slider round">
+									<span className="on">Light Mode</span>
+									<span className="off">Dark Mode</span>
+								</div>
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>

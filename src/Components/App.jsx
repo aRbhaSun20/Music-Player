@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import socketIOClient from "socket.io-client";
+import socketIOClient, { Socket } from "socket.io-client";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NavBar from "./Essential_pages/Nav_bar";
 import BottomBar from "./Essential_pages/Bottom_bar";
@@ -10,8 +11,11 @@ import NowPlaying from "./Essential_pages/Now_Playing";
 import Browse from "./Essential_pages/Browse";
 import Share from "./Essential_pages/Share";
 import ModalSection from "./Essential_pages/ModalSection";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import EndingPage from "./Essential_pages/EndingPage";
+import Contact from "./Essential_pages/Contact";
+import LogIn from "./Essential_pages/LogIn";
+import SigUp from "./Essential_pages/SignUp";
+import Preferences from "./Essential_pages/Preferences";
 
 import "./Styles/style.css";
 class App extends Component {
@@ -22,8 +26,10 @@ class App extends Component {
 			endpoint: "localhost:4000",
 			musicData: [],
 			musicLength: 0,
-			BrowsemusicData: [],
-			changenow: false,
+			browsemusicData: [],
+			browseLength: 0,
+			nowPlaying: false,
+			theme: true,
 		};
 		// console.log(props);
 	}
@@ -33,29 +39,36 @@ class App extends Component {
 		const socket = socketIOClient(endpoint);
 		socket.on("FromAPI", () => console.log("connected to backend"));
 		socket.on("MusicData", (data) => {
-			console.log("data received");
+			console.log("music data received");
 			this.setState({ musicData: data });
 			this.setState({ musicLength: data.length });
 		});
 		socket.on("BrowseMusicData", (data) => {
-			console.log("data received");
-			this.setState({ BrowsemusicData: data });
+			console.log("browse data received");
+			this.setState({ browsemusicData: data });
+			this.setState({ browseLength: data.length });
 		});
 	}
 
+	changeTheme = (data) => {
+		this.setState({ theme: data });
+	};
+
 	nowPlaying = (data) => {
-		this.setState({ changenow: data });
+		this.setState({ nowPlaying: data });
 	};
 
 	currentSong = (index) => {
-		let len = this.state.musicData.length;
-		this.nowPlaying();
+		let len = this.state.musicLength;
+		// this.nowPlaying()
 		if (index <= len) {
+			Socket.emit("browseRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[index].Song.song_name,
 				this.state.musicData[index].Artist.artist_name,
 			];
 		} else {
+			Socket.emit("browseRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[len - 1].Song.song_name,
 				this.state.musicData[len - 1].Artist.artist_name,
@@ -66,8 +79,8 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="main">
-					<NavBar />
+				<div className={`${this.state.theme ? " main-dark " : "main-light"}`}>
+					<NavBar changeTheme={this.changeTheme} />
 					<section className="page1">
 						<Switch>
 							<Route
@@ -75,7 +88,10 @@ class App extends Component {
 								exact
 								render={() => <Home musicalData={this.state.musicData} />}
 							/>
-							<Route path="/settings" component={Settings} />
+							<Route
+								path="/settings"
+								render={() => <Settings changetheme={this.changeTheme} />}
+							/>
 							<Route
 								path="/now_playing"
 								render={() => <NowPlaying musicalData={this.state.musicData} />}
@@ -83,18 +99,23 @@ class App extends Component {
 							<Route
 								path="/browse"
 								render={() => (
-									<Browse musicalData={this.state.BrowsemusicData} />
+									<Browse musicalData={this.state.browsemusicData} />
 								)}
 							/>
 							<Route path="/share" component={Share} />
+							<Route path="/preference" component={Preferences} />
+							<Route path="/contact" exact render={() => <Contact />} />
+							<Route path="/login" exact render={() => <LogIn />} />
+							<Route path="/signup" exact render={() => <SigUp />} />
 						</Switch>
 						<BottomMainbar nowPlaying={this.nowPlaying} />
 					</section>
 					<BottomBar
-						changenow={this.state.changenow}
+						changenow={this.state.nowPlaying}
 						currentMusic={this.currentSong}
 						listLength={this.state.musicLength}
 					/>
+					<EndingPage />
 				</div>
 				<ModalSection />
 			</Router>

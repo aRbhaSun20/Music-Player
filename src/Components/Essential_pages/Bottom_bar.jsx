@@ -4,21 +4,24 @@ import { Link } from "react-router-dom";
 import "../Styles/style.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-
-
 import song_playing from "../Images/Icons/Song Playing.svg";
-import previous_button from "../Images/Icons/previous-button.svg";
-
-import next_button from "../Images/Icons/next-button.svg";
+// import previous_button from "../Images/Icons/previous-button.svg";
+import previous_button from "../Images/Icons/previous-button-now.svg";
+import next_button from "../Images/Icons/next-button-now.svg";
+// import next_button from "../Images/Icons/next-button.svg";
 
 import favourite_icon from "../Images/Icons/Favourite.svg";
-import thumbs_up_icon from "../Images/Icons/Thumbs-up.svg";
-import thumbs_down_icon from "../Images/Icons/Thumbs-down.svg";
-import repeat_icon from "../Images/Icons/repeat.svg";
-import library_icon from "../Images/Icons/Library.svg";
-import fullscreen_icon from "../Images/Icons/Fullscreen.svg";
-
-import demo from "./demo.mp3";
+// import thumbs_up_icon from "../Images/Icons/Thumbs-up.svg";
+// import thumbs_down_icon from "../Images/Icons/Thumbs-down.svg";
+// import repeat_icon from "../Images/Icons/repeat.svg";
+// import library_icon from "../Images/Icons/Library.svg";
+// import fullscreen_icon from "../Images/Icons/Fullscreen.svg";
+import thumbs_up_icon from "../Images/Icons/Thumbs-up-now.svg";
+import thumbs_down_icon from "../Images/Icons/Thumbs-down-now.svg";
+import repeat_icon from "../Images/Icons/repeat-now.svg";
+import library_icon from "../Images/Icons/Library-now.svg";
+import fullscreen_icon from "../Images/Icons/Fullscreen-now.svg";
+import demo from "../Songs/demo.mp3";
 
 class BottomBar extends Component {
 	state = {
@@ -70,10 +73,14 @@ class BottomBar extends Component {
 			this.InitialState.currentIndex = 0;
 		}
 	};
-
 	render() {
-		return (<div className="">
-			<div className="bottom-bar fixed-bottom">
+		return (
+			<div
+				className={`bottom-bar ${
+					this.props.changenow ? "modified " : " fixed-bottom"
+				}`}
+			>
+				{console.log(this.props.changenow)}
 				<div className="playlist-details">
 					<div className="album-song-bottom">
 						<img
@@ -94,12 +101,8 @@ class BottomBar extends Component {
 								alt="previous-button"
 								onClick={this.playPrevious}
 							/>
-							<div
-								className={`song${
-									this.props.changenow ? "modified" : "unmodified"
-								}`}
-							>
-								<audio src={demo} controls></audio>
+							<div className={`songunmodified`}>
+								<audio className="current-song" src={demo} controls></audio>
 							</div>
 
 							<img
@@ -129,10 +132,7 @@ class BottomBar extends Component {
 						})}
 					</ul>
 				</div>
-			
 			</div>
-		</div>
-			
 		);
 	}
 }

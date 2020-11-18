@@ -9,7 +9,10 @@ class Song extends Component {
 	render() {
 		return (
 			<div className="song">
-				<div className="song-details">
+				<div
+					className="song-details"
+					style={{ opacity: `${1 - this.props.index * 0.05}` }}
+				>
 					<img className="close-icon" src={close_icon} alt="close" />
 					<div className="song-name">{this.props.Songdata.Song.song_name}</div>
 					<div className="Artist">{this.props.Songdata.Artist.artist_name}</div>
@@ -18,7 +21,6 @@ class Song extends Component {
 						{this.props.Songdata.features.duration}
 					</div>
 				</div>
-				{/* <div className="divider-line" /> */}
 			</div>
 		);
 	}

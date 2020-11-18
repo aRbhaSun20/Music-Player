@@ -7,7 +7,6 @@ import "../Styles/style2.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class Browse extends Component {
-	recentSongslist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10];
 	state = {};
 	render() {
 		return (
@@ -15,13 +14,16 @@ class Browse extends Component {
 				<div className="browse">
 					<div className="page-section">
 						<div className="main-song-lists">
-							{this.props.musicalData.map((Songdata, index) => {
-								return (
-									<div key={index}>
-										<Song Songdata={Songdata} />
-									</div>
-								);
-							})}
+							{this.props.musicalData
+								.slice("")
+								.reverse()
+								.map((Songdata, index) => {
+									return (
+										<div key={index}>
+											<Song Songdata={Songdata} index={index} />
+										</div>
+									);
+								})}
 						</div>
 					</div>
 				</div>

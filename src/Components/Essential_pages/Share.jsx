@@ -4,7 +4,6 @@ import "../Styles/style4.css";
 
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-
 import playlist_share_icon from "../Images/Icons/playlist-share.svg";
 import share_icon from "../Images/Icons/share-icon-share.svg";
 import favourite_icon from "../Images/Icons/favourite-share.svg";
@@ -18,7 +17,6 @@ class Share extends Component {
 			<div className="Share-page">
 				<div className="page-section">
 					<div className="Album-Image-Section">
-						
 						<div id="share-bar" className="share-bar">
 							<div className="top-bar-share">
 								<div className="top-bar-share-headings">
@@ -71,9 +69,7 @@ class Share extends Component {
 								</div>
 							</div>
 						</div>
-						
 					</div>
-					
 				</div>
 			</div>
 		);

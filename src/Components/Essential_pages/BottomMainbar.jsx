@@ -13,16 +13,15 @@ import artist_icon from "../Images/Icons/Artist.svg";
 import library2_icon from "../Images/Icons/Library2.svg";
 
 class BottomMainbar extends Component {
-	
-	nowPlaying = () =>  {
+	nowPlaying = () => {
 		console.log("not clicked");
 		this.props.nowPlaying(true);
-	}
+	};
 
 	clickedme = () => {
 		console.log("clickeme");
 		this.props.nowPlaying(false);
-	}
+	};
 
 	render() {
 		return (
@@ -105,7 +104,7 @@ class BottomMainbar extends Component {
 								<Link
 									to="/now_playing"
 									onClick={this.nowPlaying}
-									className="main-menu-list"
+									className="main-menu-list paint-red"
 								>
 									Your Library
 								</Link>
@@ -159,7 +158,7 @@ class BottomMainbar extends Component {
 								<Link
 									to="/"
 									onClick={this.clickedme}
-									className="main-menu-list"
+									className="main-menu-list paint-red"
 								>
 									Playlist
 								</Link>

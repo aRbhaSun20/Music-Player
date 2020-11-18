@@ -15,23 +15,19 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class NavBar extends Component {
 	state = {};
+
 	render() {
 		return (
 			<div className="nav-bar">
 				<nav className="nav-bar navbar-light fixed-top">
 					<div className="title">
-						<h2>Music</h2>
+						<h2>Oscillations</h2>
 					</div>
-					<Link to="/browse">
-						<div className="search-bar">
-							<img
-								src={Search_Icon}
-								alt="search-icon"
-								className="Search-icon"
-							/>
-							<input type="text" placeholder="Search for songs, artist, etc." />
-						</div>
-					</Link>
+
+					<div className="search-bar">
+						<img src={Search_Icon} alt="search-icon" className="Search-icon" />
+						<input type="text" placeholder="Search for songs, artist, etc." />
+					</div>
 
 					<ul className="nav-links">
 						<li>
@@ -98,7 +94,7 @@ class NavBar extends Component {
 									src={contact_icon}
 									alt="User"
 									data-toggle="modal"
-									data-target="#exampleModal"
+									data-target="#sharebar"
 									id="contact-icon"
 								/>
 							</Link>
