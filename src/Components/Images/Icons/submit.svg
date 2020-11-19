@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="167" height="39" viewBox="0 0 167 39">
+  <g id="Group_8149" data-name="Group 8149" transform="translate(-1029 -383)">
+    <path id="Rectangle_416" data-name="Rectangle 416" d="M5,0H167a0,0,0,0,1,0,0V39a0,0,0,0,1,0,0H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" transform="translate(1029 383)" fill="#181531"/>
+    <text id="send_message" data-name="send message" transform="translate(1064 406)" fill="#fff" font-size="10" font-family="SegoeUI, Segoe UI" letter-spacing="0.15em" opacity="0.76"><tspan x="0" y="0">SEND MESSAGE</tspan></text>
+    <g id="Actions_Navigation_arrow--right_20" data-name="Actions / Navigation / arrow--right / 20" transform="translate(1173 399.957)">
+      <path id="Fill" d="M7.438.957l-.3.653L8.474,2.721H0v.586H8.474L7.15,4.135l.288.813,2.6-1.933Z" transform="translate(0 -0.957)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
