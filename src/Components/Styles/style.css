@@ -13,8 +13,7 @@ body {
 }
 
 .nav-bar {
-  /* background: repeating-linear-gradient(45deg, #0e092e, #100c2e, #0b082e); */
-  /* position: fixed; */
+  background: repeating-linear-gradient(45deg, #0e092e, #100c2e, #0b082e);
   justify-content: space-evenly;
   align-items: center;
 }
@@ -71,7 +70,8 @@ nav {
 }
 
 div.main-dark {
-  /* background: repeating-linear-gradient(45deg, #1a163b, #0c0533, #0c0830); */
+  /* background: repeating-linear-gradient(45deg, #1f1d38, #0c0533, #0c0830);
+  background: repeating-linear-gradient(45deg, #2c2c2c, #000000); */
   background-image: url("../Images/Icons/bg.png");
   opacity: 0.8;
   background-size: cover;

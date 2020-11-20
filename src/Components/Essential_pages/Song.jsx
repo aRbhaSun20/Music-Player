@@ -14,11 +14,11 @@ class Song extends Component {
 					style={{ opacity: `${1 - this.props.index * 0.05}` }}
 				>
 					<img className="close-icon" src={close_icon} alt="close" />
-					<div className="song-name">{this.props.Songdata.Song.song_name}</div>
-					<div className="Artist">{this.props.Songdata.Artist.artist_name}</div>
-					<div className="Album">{this.props.Songdata.Album.album_name}</div>
+					<div className="song-name">{this.props.Songdata.song_name}</div>
+					<div className="Artist">{this.props.Songdata.artist_name}</div>
+					<div className="Album">{this.props.Songdata.album_name}</div>
 					<div className="Duration">
-						{this.props.Songdata.features.duration}
+						{this.props.Songdata.duration}
 					</div>
 				</div>
 			</div>

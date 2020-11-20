@@ -18,6 +18,7 @@ import SigUp from "./Essential_pages/SignUp";
 import Preferences from "./Essential_pages/Preferences";
 
 import "./Styles/style.css";
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -31,8 +32,9 @@ class App extends Component {
 			nowPlaying: false,
 			theme: true,
 		};
-		// console.log(props);
 	}
+
+	
 
 	componentDidMount() {
 		const { endpoint } = this.state;
@@ -60,18 +62,17 @@ class App extends Component {
 
 	currentSong = (index) => {
 		let len = this.state.musicLength;
-		// this.nowPlaying()
 		if (index <= len) {
 			Socket.emit("browseRead", this.state.musicData[index]);
 			return [
-				this.state.musicData[index].Song.song_name,
-				this.state.musicData[index].Artist.artist_name,
+				this.state.musicData[index].song_name,
+				this.state.musicData[index].artist_name,
 			];
 		} else {
 			Socket.emit("browseRead", this.state.musicData[index]);
 			return [
-				this.state.musicData[len - 1].Song.song_name,
-				this.state.musicData[len - 1].Artist.artist_name,
+				this.state.musicData[len - 1].song_name,
+				this.state.musicData[len - 1].artist_name,
 			];
 		}
 	};

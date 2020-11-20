@@ -5,6 +5,7 @@ import "../Styles/style.css";
 import AsalMein from "../Images/final-album/Asal Mein.png";
 import Baarish from "../Images/final-album/Baarish lete aana.png";
 import Arijth_album from "../Images/final-album/arijith-song.png";
+
 class AlbumSection extends Component {
 	render() {
 		return (

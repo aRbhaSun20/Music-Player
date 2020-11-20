@@ -7,6 +7,7 @@ import amitabh from "../Images/final-artist/Amitabh.png";
 import arijith from "../Images/final-artist/Arijith.png";
 import shreya from "../Images/final-artist/Shreya.png";
 import dhavni from "../Images/final-artist/Dhavni.png";
+
 class Preferences extends Component {
 	lang = ["English", "Kannada", "Hindi", "Punjabi", "Bengali"];
 	render() {

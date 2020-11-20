@@ -5,27 +5,21 @@ import "../Styles/style.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import song_playing from "../Images/Icons/Song Playing.svg";
-// import previous_button from "../Images/Icons/previous-button.svg";
 import previous_button from "../Images/Icons/previous-button-now.svg";
 import next_button from "../Images/Icons/next-button-now.svg";
-// import next_button from "../Images/Icons/next-button.svg";
-
 import favourite_icon from "../Images/Icons/Favourite.svg";
-// import thumbs_up_icon from "../Images/Icons/Thumbs-up.svg";
-// import thumbs_down_icon from "../Images/Icons/Thumbs-down.svg";
-// import repeat_icon from "../Images/Icons/repeat.svg";
-// import library_icon from "../Images/Icons/Library.svg";
-// import fullscreen_icon from "../Images/Icons/Fullscreen.svg";
 import thumbs_up_icon from "../Images/Icons/Thumbs-up-now.svg";
 import thumbs_down_icon from "../Images/Icons/Thumbs-down-now.svg";
 import repeat_icon from "../Images/Icons/repeat-now.svg";
 import library_icon from "../Images/Icons/Library-now.svg";
 import fullscreen_icon from "../Images/Icons/Fullscreen-now.svg";
-import demo from "../Songs/demo.mp3";
+// import demo from "../Songs/demo.mp3";
+const demo = require("../Songs/demo.mp3");
 
 class BottomBar extends Component {
 	state = {
 		current_playing: ["Unknown Song", "Unknown Artist"],
+		current_song: require("../Songs/demo.mp3")
 	};
 
 	InitialState = {
@@ -49,6 +43,14 @@ class BottomBar extends Component {
 		"library_icon",
 		"fullscreen_icon",
 	];
+
+	componentDidMount() {
+		fetch("../Songs/demo.mp3")
+			.catch((err) => console.log(err))
+			.then((data) => {
+				// this.setState({current_song : data})
+			});
+	}
 
 	playNext = () => {
 		if (this.InitialState.currentIndex < this.props.listLength) {
@@ -102,7 +104,11 @@ class BottomBar extends Component {
 								onClick={this.playPrevious}
 							/>
 							<div className={`songunmodified`}>
-								<audio className="current-song" src={demo} controls></audio>
+								<audio
+									className="current-song"
+									src={this.state.current_song}
+									controls
+								></audio>
 							</div>
 
 							<img
