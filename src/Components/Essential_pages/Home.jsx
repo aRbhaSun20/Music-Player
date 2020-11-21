@@ -14,6 +14,8 @@ import play_next_big_icon from "../Images/Icons/Play-Next-big.svg";
 class Home extends Component {
 	state = {};
 
+	deleteSong = (data) => this.props.deleteSongData(data);
+
 	render() {
 		return (
 			<div className="">
@@ -62,7 +64,12 @@ class Home extends Component {
 						{this.props.musicalData.map((Songdata, index) => {
 							return (
 								<div key={index}>
-									<Song Songdata={Songdata} />
+									<Song
+										Songdata={Songdata}
+										deleteSong={this.deleteSong}
+										index={index}
+										identify="home"
+									/>
 								</div>
 							);
 						})}

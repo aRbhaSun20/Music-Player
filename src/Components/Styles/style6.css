@@ -15,7 +15,7 @@
 .top-contact .map img.mapimg {
     opacity: 0.85;
     min-width: 113em;
-    max-height: 40em;
+    max-height: 42.5em;
     margin-top: 10px;
 }
 
@@ -57,7 +57,7 @@
 .contact-form {
     scale: 1.2;
     width: 420px;
-    height: 65vh;
+    height: 71vh;
     background-color: #ece8ff;
     position: absolute;
     right: 6em;
@@ -67,40 +67,42 @@
 }
 
 .contact-form .text-contact {
-    padding-top: 9em;
+    padding-top: 9.5em;
     padding-left: 1.3em;
 }
 
 .text-contact .FeedTitle {
-    font-size: 22px;
+    font-size: 27px;
     color: rgb(56, 56, 56);
     opacity: 0.9;
     margin-left: 30px;
 }
 
 .contact-form .inputs {
-    border-bottom: 1px solid #70707063;
-    margin-top: 1.5em;
-    margin-left: 30px;
-    width: 20em;
+    display: flex;
+    flex-direction: column;
+    color: #555555da;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin-left: 1.9em;
+    font-size: 17px;
+    height: 5em;
 }
+.contact-form .form-input input {
 
-.contact-form .inputs input {
-    text-emphasis: none;
     font-size: 13px;
+    outline: auto thick;
     opacity: 0.9;
+    max-width: 24em;
     max-height: 3em;
-    outline: none;
-
-    max-width: 25em;
+    padding-left: 10px;
 }
 
 .inputs-upload {
-    margin-top: 5em;
-    margin-left: 3em;
+    margin-top: 3.5em;
+    margin-left: 3.5em;
     justify-content: space-evenly;
     align-items: stretch;
-    /* opacity: 0.7; */
 }
 
 .upload-text {
@@ -120,6 +122,6 @@
     position: absolute;
     right: 0;
     scale: 1.1;
-    bottom: 4.5em;
+    bottom: 3.1em;
     cursor: pointer;
 }

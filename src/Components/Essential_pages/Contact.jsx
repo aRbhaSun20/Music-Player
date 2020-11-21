@@ -28,31 +28,48 @@ class Contact extends Component {
 							<div className="text-contact">
 								<h className="FeedTitle">Feedback form</h>
 								<div className="inputs">
-									<input id="inp" type="text" name="Name" placeholder="Name" />
+									Name.
+									<div className="form-input">
+										<input
+											id="inp"
+											type="text"
+											name="Name"
+											placeholder="Name"
+										/>
+									</div>
 								</div>
 								<div className="inputs">
-									<input
-										id="inp"
-										type="text"
-										name="Email"
-										placeholder="E-mail"
-									/>
+									Email.
+									<div className="form-input">
+										<input
+											id="inp"
+											type="text"
+											name="Email"
+											placeholder="E-mail"
+										/>
+									</div>
 								</div>
 								<div className="inputs">
-									<input
-										id="inp"
-										type="text"
-										name="Phone"
-										placeholder="Phone"
-									/>
+									Phone.
+									<div className="form-input">
+										<input
+											id="inp"
+											type="text"
+											name="Phone"
+											placeholder="Phone"
+										/>
+									</div>
 								</div>
 								<div className="inputs">
-									<input
-										id="inp"
-										type="text"
-										name="Message"
-										placeholder="Message"
-									/>
+									Message.
+									<div className="form-input">
+										<input
+											id="inp"
+											type="text"
+											name="Message"
+											placeholder="Message"
+										/>
+									</div>
 								</div>
 							</div>
 							<div className="inputs-upload">

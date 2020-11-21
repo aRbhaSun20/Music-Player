@@ -8,6 +8,30 @@ import wall1 from "../Images/Icons/wallpaper1.png";
 import wall2 from "../Images/Icons/wallpaper2.png";
 
 class LogIn extends Component {
+	state = {
+		Email: "",
+		Password: "",
+	};
+
+	handleChange = (event) => {
+		event.preventDefault();
+		switch (event.target.id) {
+			case "Email":
+				this.setState({ Email: event.target.value });
+				break;
+			case "Password":
+				this.setState({ Password: event.target.value });
+				break;
+			default:
+				break;
+		}
+	};
+
+	HandleSubmit = (event) => {
+		event.preventDefault();
+		this.props.loginUserData(this.state);
+	};
+
 	render() {
 		return (
 			<div className="login">
@@ -23,7 +47,10 @@ class LogIn extends Component {
 								className="inputs"
 								type="text"
 								name="email"
+								id="Email"
+								value={this.state.Email}
 								placeholder="demo@domain.com"
+								onChange={this.handleChange}
 							/>
 						</div>
 					</div>
@@ -32,10 +59,12 @@ class LogIn extends Component {
 						<div className="input-box">
 							<input
 								className="inputs"
-								type="text"
+								type="password"
 								name="pwd"
-								id="pwd"
+								id="Password"
+								value={this.state.Password}
 								placeholder="Enter your password"
+								onChange={this.handleChange}
 							/>
 						</div>
 					</div>
@@ -44,7 +73,7 @@ class LogIn extends Component {
 						<div>Keep me logged in</div>
 					</div>
 					<div className="loginBtn">
-						<button className="btn">
+						<button className="btn" onClick={this.HandleSubmit}>
 							Log In <img className="arrow" src={arrow} alt="arrow" />
 						</button>
 						<div className="login-text">

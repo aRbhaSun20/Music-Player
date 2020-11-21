@@ -38,7 +38,12 @@ class EndingPage extends Component {
 						<img src={instagram} alt="instagram" />
 						<img src={twitter} alt="twitter" />
 						<img src={youtube} alt="youtube" />
-						<div className="follow">Follow us</div>
+						<div className="follow">
+							Follow us
+							<div className="">
+								Terms and Conditions and  policies
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

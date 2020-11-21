@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import socketIOClient, { Socket } from "socket.io-client";
+import socketIOClient from "socket.io-client";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NavBar from "./Essential_pages/Nav_bar";
@@ -18,7 +18,7 @@ import SigUp from "./Essential_pages/SignUp";
 import Preferences from "./Essential_pages/Preferences";
 
 import "./Styles/style.css";
-
+let socket;
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -34,11 +34,9 @@ class App extends Component {
 		};
 	}
 
-	
-
 	componentDidMount() {
 		const { endpoint } = this.state;
-		const socket = socketIOClient(endpoint);
+		socket = socketIOClient(endpoint);
 		socket.on("FromAPI", () => console.log("connected to backend"));
 		socket.on("MusicData", (data) => {
 			console.log("music data received");
@@ -63,13 +61,13 @@ class App extends Component {
 	currentSong = (index) => {
 		let len = this.state.musicLength;
 		if (index <= len) {
-			Socket.emit("browseRead", this.state.musicData[index]);
+			socket.emit("browseRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[index].song_name,
 				this.state.musicData[index].artist_name,
 			];
 		} else {
-			Socket.emit("browseRead", this.state.musicData[index]);
+			socket.emit("browseRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[len - 1].song_name,
 				this.state.musicData[len - 1].artist_name,
@@ -77,6 +75,20 @@ class App extends Component {
 		}
 	};
 
+	deleteSong = (data) => {
+		socket.emit("deleteData", data);
+	};
+
+	loginUserData = (data) => {
+		console.log(data);
+		socket.emit("loginUser", data);
+	};
+
+	signUpUserData = (data) => {
+		console.log(data);
+		socket.emit("signUpUser", data);
+	};
+	
 	render() {
 		return (
 			<Router>
@@ -87,7 +99,12 @@ class App extends Component {
 							<Route
 								path="/"
 								exact
-								render={() => <Home musicalData={this.state.musicData} />}
+								render={() => (
+									<Home
+										deleteSongData={this.deleteSong}
+										musicalData={this.state.musicData}
+									/>
+								)}
 							/>
 							<Route
 								path="/settings"
@@ -95,19 +112,35 @@ class App extends Component {
 							/>
 							<Route
 								path="/now_playing"
-								render={() => <NowPlaying musicalData={this.state.musicData} />}
+								render={() => (
+									<NowPlaying
+										deleteSongData={this.deleteSong}
+										musicalData={this.state.musicData}
+									/>
+								)}
 							/>
 							<Route
 								path="/browse"
 								render={() => (
-									<Browse musicalData={this.state.browsemusicData} />
+									<Browse
+										deleteSongData={this.deleteSong}
+										musicalData={this.state.browsemusicData}
+									/>
 								)}
 							/>
 							<Route path="/share" component={Share} />
 							<Route path="/preference" component={Preferences} />
 							<Route path="/contact" exact render={() => <Contact />} />
-							<Route path="/login" exact render={() => <LogIn />} />
-							<Route path="/signup" exact render={() => <SigUp />} />
+							<Route
+								path="/login"
+								exact
+								render={() => <LogIn loginUserData={this.loginUserData} />}
+							/>
+							<Route
+								path="/signup"
+								exact
+								render={() => <SigUp signUpUserData={this.signUpUserData} />}
+							/>
 						</Switch>
 						<BottomMainbar nowPlaying={this.nowPlaying} />
 					</section>

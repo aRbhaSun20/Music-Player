@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import Song from "./Song";
 
@@ -17,6 +16,8 @@ class NowPlaying extends Component {
 			album: "Unknown ALbum",
 		},
 	};
+	deleteSong = (data) => this.props.deleteSongData(data);
+
 	render() {
 		return (
 			<div className="Now-playing">
@@ -48,7 +49,12 @@ class NowPlaying extends Component {
 							{this.props.musicalData.map((Songdata, index) => {
 								return (
 									<div key={index}>
-										<Song Songdata={Songdata} index={index} />
+										<Song
+											deleteSong={this.deleteSong}
+											Songdata={Songdata}
+											index={index}
+											identify="now"
+										/>
 									</div>
 								);
 							})}

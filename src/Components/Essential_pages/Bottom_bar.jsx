@@ -13,14 +13,25 @@ import thumbs_down_icon from "../Images/Icons/Thumbs-down-now.svg";
 import repeat_icon from "../Images/Icons/repeat-now.svg";
 import library_icon from "../Images/Icons/Library-now.svg";
 import fullscreen_icon from "../Images/Icons/Fullscreen-now.svg";
-// import demo from "../Songs/demo.mp3";
-const demo = require("../Songs/demo.mp3");
+
+import demo from "../Songs/demo.mp3";
+import demo1 from "../Songs/demo2.mp3";
 
 class BottomBar extends Component {
 	state = {
 		current_playing: ["Unknown Song", "Unknown Artist"],
-		current_song: require("../Songs/demo.mp3")
+		songsList: ["", demo, demo1],
+		index: 0,
 	};
+
+	async getAudio() {
+		let response = await fetch("../Songs/demo2.mp3");
+		let url = await response.url;
+		this.setState({ current_song: url });
+		this.player.src = url;
+		document.getElementById("music").src = url;
+		console.log(url);
+	}
 
 	InitialState = {
 		currentIndex: 0,
@@ -44,20 +55,14 @@ class BottomBar extends Component {
 		"fullscreen_icon",
 	];
 
-	componentDidMount() {
-		fetch("../Songs/demo.mp3")
-			.catch((err) => console.log(err))
-			.then((data) => {
-				// this.setState({current_song : data})
-			});
-	}
-
 	playNext = () => {
+		this.player.src = demo1;
 		if (this.InitialState.currentIndex < this.props.listLength) {
 			this.setState({
 				current_playing: this.props.currentMusic(
 					this.InitialState.currentIndex
 				),
+				index: this.InitialState.currentIndex,
 			});
 			this.InitialState.currentIndex += 1;
 		}
@@ -69,12 +74,14 @@ class BottomBar extends Component {
 				current_playing: this.props.currentMusic(
 					this.InitialState.currentIndex - 1
 				),
+				index: this.InitialState.currentIndex,
 			});
 			this.InitialState.currentIndex -= 1;
 		} else {
 			this.InitialState.currentIndex = 0;
 		}
 	};
+
 	render() {
 		return (
 			<div
@@ -106,8 +113,10 @@ class BottomBar extends Component {
 							<div className={`songunmodified`}>
 								<audio
 									className="current-song"
-									src={this.state.current_song}
 									controls
+									src={this.state.songsList[this.state.index]}
+									ref={(ref) => (this.player = ref)}
+									id="music"
 								></audio>
 							</div>
 

@@ -125,6 +125,7 @@
   font-size: 37px;
   color: rgb(255, 255, 255);
   letter-spacing: 8px;
+  opacity: 0;
 }
 
 .Now-playing .song-artist {
@@ -133,7 +134,7 @@
   left: 12.7em;
   font-size: 18px;
   color: #7b7b7b;
-  opacity: 0.9;
+  opacity: 0;
 }
 
 .Now-playing .song-album {
@@ -142,7 +143,7 @@
   top: 3em;
   left: 12.7em;
   color: #7b7b7b;
-  opacity: 0.9;
+  opacity: 0;
 }
 
 .Now-playing .song-playing-album-now {

@@ -9,6 +9,33 @@ import wall2 from "../Images/Icons/wallpaper2.png";
 import correct from "../Images/Icons/correct.svg";
 
 class SignUp extends Component {
+	state = {
+		Name: "",
+		Email: "",
+		Password: "",
+	};
+
+	handleChange = (event) => {
+		event.preventDefault();
+		switch (event.target.id) {
+			case "Name":
+				this.setState({ Name: event.target.value });
+				break;
+			case "Email":
+				this.setState({ Email: event.target.value });
+				break;
+			case "Password":
+				this.setState({ Password: event.target.value });
+				break;
+			default:
+				break;
+		}
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+		this.props.signUpUserData(this.state);
+	};
 	render() {
 		return (
 			<div className="sigin">
@@ -25,7 +52,9 @@ class SignUp extends Component {
 								className="inputs"
 								type="text"
 								name="email"
+								id="Name"
 								placeholder="Blah-blah"
+								onChange={this.handleChange}
 							/>
 						</div>
 					</div>
@@ -37,7 +66,9 @@ class SignUp extends Component {
 									className="inputs"
 									type="text"
 									name="email"
+									id="Email"
 									placeholder="demo@domain.com"
+									onChange={this.handleChange}
 								/>
 							</div>
 						</div>
@@ -51,10 +82,11 @@ class SignUp extends Component {
 						<div className="input-box">
 							<input
 								className="inputs"
-								type="text"
+								type="password"
 								name="pwd"
-								id="pwd"
+								id="Password"
 								placeholder="Enter your password"
+								onChange={this.handleChange}
 							/>
 						</div>
 					</div>
@@ -62,8 +94,8 @@ class SignUp extends Component {
 						<input type="checkbox" />
 						<div>Keep me Signed in</div>
 					</div>
-					<div className="signBtn">
-						<button className="btn">
+					<div className="signBtn" >
+						<button className="btn" onClick={this.handleSubmit} >
 							Sign Up
 							<img className="arrow" src={arrow} alt="arrow" />
 						</button>

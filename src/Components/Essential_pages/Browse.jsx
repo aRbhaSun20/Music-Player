@@ -8,6 +8,9 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class Browse extends Component {
 	state = {};
+
+	deleteSong = (data) => this.props.deleteSongData(data);
+
 	render() {
 		return (
 			<div className="">
@@ -20,7 +23,12 @@ class Browse extends Component {
 								.map((Songdata, index) => {
 									return (
 										<div key={index}>
-											<Song Songdata={Songdata} index={index} />
+											<Song
+												Songdata={Songdata}
+												index={index}
+												identify="browse"
+												deleteSong={this.deleteSong}
+											/>
 										</div>
 									);
 								})}
