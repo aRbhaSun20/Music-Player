@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "../Styles/style.css";
+import "../Styles/index.css";
 
 import facebook from "../Images/Icons/facebook_ending.svg";
 import instagram from "../Images/Icons/insta_ending.svg";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Song from "./Song";
 import AlbumSection from "./AlbumSection";
 
-import "../Styles/style.css";
+import "../Styles/index.css";
 
 import playlist_icon from "../Images/Icons/Playlist.png";
 import Search_Icon from "../Images/Icons/Search-Icon.svg";
@@ -16,14 +16,14 @@ class Home extends Component {
 
 	render() {
 		return (
-			<div className="">
+			<div className="home-page">
 				<div className="page-section">
 					<img
 						className="Playlist-add"
 						src={playlist_icon}
 						alt="playlist-add"
 					/>
-					<div className="search-bar">
+					{/* <div className="search-bar">
 						<input
 							type="text"
 							placeholder="Search for Songs, Artist and More"
@@ -39,7 +39,7 @@ class Home extends Component {
 							</div>
 							
 						</div>
-					</div>
+					</div> */}
 					<div className="Album-Image-Section">
 						<a
 							href="#carouselExampleControls"

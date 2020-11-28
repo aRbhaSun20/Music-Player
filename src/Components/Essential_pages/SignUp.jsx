@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 
-import "../Styles/style7.css";
+import "../Styles/index.css";
 
 import arrow from "../Images/Icons/arrow.svg";
 import correct from "../Images/Icons/correct.svg";

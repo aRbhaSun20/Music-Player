@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 
-import "../Styles/style7.css";
+import "../Styles/index.css";
 import arrow from "../Images/Icons/arrow.svg";
 import wall from "../Images/Icons/log.svg";
 
@@ -35,7 +35,7 @@ class LogIn extends Component {
 		return (
 			<div className="login">
 				<div className="images">
-					<img src={wall} alt=""/>
+					<img src={wall} alt="" />
 				</div>
 				<div className="loginItems">
 					<div className="loginTitle">Log in.</div>

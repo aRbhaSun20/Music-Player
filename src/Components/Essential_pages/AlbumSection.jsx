@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "../Styles/style.css";
 
+import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
 import hawaBanke from "../Images/Artist/hawaBanke.jpg";
 import hawaBanke2 from "../Images/Artist/hawaBanke2.jpg";
 import kinnasonna from "../Images/Artist/kinnasonna.jpg";

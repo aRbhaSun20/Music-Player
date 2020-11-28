@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "../Styles/style5.css";
+import "../Styles/index.css";
 
 class Settings extends Component {
 	state = {};

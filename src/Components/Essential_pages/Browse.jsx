@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
 import Song from "./Song";
-import "../Styles/style.css";
-import "../Styles/style2.css";
-
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../Styles/index.css";
 
 class Browse extends Component {
 	state = {};

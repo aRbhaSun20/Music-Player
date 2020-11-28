@@ -121,11 +121,11 @@ input:checked+.slider .off {
   display: none;
 }
 
-.slider.round {
+.slider .round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider .round:before {
   border-radius: 50%;
 }
 

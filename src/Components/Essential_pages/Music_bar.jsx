@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
-import "../Styles/style.css";
+import "../Styles/index.css";
+
 import song_playing from "../Images/Icons/Song Playing.svg";
 import previous_button from "../Images/Icons/previous-button-now.svg";
 import next_button from "../Images/Icons/next-button-now.svg";
@@ -80,63 +81,66 @@ class MusicBar extends Component {
 
 	render() {
 		return (
-			<div
-				className={`bottom-bar ${
-					this.props.changenow ? "modified " : " fixed-bottom"
-				}`}
-			>
-				<div className="playlist-details">
-					<div className="album-song-bottom">
-						<img
-							onClick={this.Current_playing}
-							className="song-playing-album"
-							src={song_playing}
-							alt="song-playing-album"
-						/>
-						<div className="song-details-bottom">
-							<div className="song-name">{this.state.current_playing[0]}</div>
-							<div className="song-artist">{this.state.current_playing[1]}</div>
-						</div>
-
-						<div className="rythm-buttons">
+			<div className="music-bar">
+				<div
+					className={`bottom-bar ${
+						this.props.changenow ? "modified " : " fixed-bottom"
+					}`}
+				>
+					<div className="playlist-details">
+						<div className="album-song-bottom">
 							<img
-								src={previous_button}
-								className="previous-button"
-								alt="previous-button"
-								onClick={this.playPrevious}
+								onClick={this.Current_playing}
+								className="song-playing-album"
+								src={song_playing}
+								alt="song-playing-album"
 							/>
-							<div className={`songunmodified`}>
-								<audio
-									className="current-song"
-									controls
-									src={this.state.songsList[this.state.index]}
-									ref={(ref) => (this.player = ref)}
-									id="music"
-								></audio>
+							<div className="song-details-bottom">
+								<div className="song-name">{this.state.current_playing[0]}</div>
+								<div className="song-artist">
+									{this.state.current_playing[1]}
+								</div>
 							</div>
 
-							<img
-								src={next_button}
-								className="next-button"
-								alt="next-button"
-								onClick={this.playNext}
-							/>
-						</div>
-					</div>
-				</div>
-				<div className="bottom-icons">
-					{this.state.Iconslist.map((i, index) => {
-						return (
-							<div key={index}>								
+							<div className="rythm-buttons">
 								<img
-									className="bottom-bar-icons"
-									src={this.state.Iconslist[index]}
-									alt={this.state.IconslistAlt[index]}
+									src={previous_button}
+									className="previous-button"
+									alt="previous-button"
+									onClick={this.playPrevious}
+								/>
+								<div className={`songunmodified`}>
+									<audio
+										className="current-song"
+										controls
+										src={this.state.songsList[this.state.index]}
+										ref={(ref) => (this.player = ref)}
+										id="music"
+									></audio>
+								</div>
+
+								<img
+									src={next_button}
+									className="next-button"
+									alt="next-button"
+									onClick={this.playNext}
 								/>
 							</div>
-							
-						);
-					})}
+						</div>
+					</div>
+					<div className="bottom-icons">
+						{this.state.Iconslist.map((i, index) => {
+							return (
+								<div key={index}>
+									<img
+										className="bottom-bar-icons"
+										src={this.state.Iconslist[index]}
+										alt={this.state.IconslistAlt[index]}
+									/>
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		);

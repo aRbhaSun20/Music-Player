@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "../Styles/style6.css";
+import "../Styles/index.css";
 
 import pinPoint from "../Images/Icons/pinpoint.svg";
 import mapImg from "../Images/Icons/map.png";

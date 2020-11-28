@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import "../Styles/style.css"
-import privacy from "../Images/Icons/privacy.png"
+import "../Styles/index.css";
+
+import privacy from "../Images/Icons/privacy.png";
+
 class privacyPolicy extends Component {
 	render() {
-		return(
+		return (
 			<div className="privacy-policy">
-				<img src={privacy} alt="privacy"/>
+				<img src={privacy} alt="privacy" />
 			</div>
-		)
+		);
 	}
 }
 

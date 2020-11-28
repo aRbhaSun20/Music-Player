@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "../Styles/style.css";
+import "../Styles/index.css";
+import Search_Icon from "../Images/Icons/Search-Icon.svg";
 
 class NavBar extends Component {
 	state = {};
@@ -18,7 +19,7 @@ class NavBar extends Component {
 
 	render() {
 		return (
-			<div className="nav-bar">
+			<div className="nav-section">
 				<nav className="nav-bar fixed-top">
 					<div className="title">
 						<h2>Oscillations</h2>
@@ -65,6 +66,26 @@ class NavBar extends Component {
 						<li>
 							<Link to="signup" className="main-menu-list">
 								Sign Up / Login
+							</Link>
+						</li>
+						<li>
+							<Link to="browse" className="main-menu-list">
+								<div className="search-songs">
+									<div className="search-bar">
+									<input
+										type="text"
+										placeholder="Search for Songs, Artist and More"
+									/>
+									<div className="Search-icon-text">
+										<img
+											src={Search_Icon}
+											alt="search-icon"
+											className="Search-icon"
+										/>
+										<div className="text">Search</div>
+									</div>
+								</div>
+								</div>
 							</Link>
 						</li>
 					</ul>

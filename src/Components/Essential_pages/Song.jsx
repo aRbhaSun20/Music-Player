@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "../Styles/style.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../Styles/index.css";
+
 
 import close_icon from "../Images/Icons/close.svg";
 

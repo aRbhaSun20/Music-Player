@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "../Styles/style7.css";
+import "../Styles/index.css";
 
 import dharshan from "../Images/Artist/darshan1.jpg";
 import amitabh from "../Images/Artist/amitabh3.jpg";

@@ -136,11 +136,6 @@
     color: white;
 }
 
-.forgot {
-    margin: 10px 10px 10px 10px;
-    font-size: 10px;
-}
-
 .login-text {
     width: 17em;
     color: #a3a3a3;
@@ -192,22 +187,6 @@
     height: 6vh;
     border-radius: 5px;
     border: 1px solid #707070;
-}
-
-.wallpaper1 {
-    position: absolute;
-    width: 30em;
-    right: 37em;
-    top: 6em;
-    opacity: 0.7;
-}
-
-.wallpaper2 {
-    opacity: 0.7;
-    position: absolute;
-    width: 30em;
-    right: 5em;
-    bottom: 10em;
 }
 
 .prefer {

@@ -7,10 +7,6 @@
     display: flex;
 }
 
-.top-contact .title {
-    /* display: flex; */
-    position: absolute;
-}
 
 .top-contact .map img.mapimg {
     opacity: 0.85;
