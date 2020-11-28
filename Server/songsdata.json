@@ -1,0 +1,60 @@
+[
+	{
+		"song_name": "Song 1",
+		"source_file": "source-file",
+		"song_image": "path-image",
+		"playlist_name": "Playlist 1",
+		"playlist_image": "path-image",
+		"artist_name": "Artist 1",
+		"artist_image": "path-image",
+		"album_name": "Album 1",
+		"album_image": "path-image",
+		"favourites": 0,
+		"likes": 0,
+		"dislikes": 0,
+		"duration": "5:00"
+	}, {
+	    "song_name": "Song 1",
+	    "source_file": "source-file",
+	    "song_image": "path-image",
+	    "playlist_name": "Playlist 1",
+	    "playlist_image": "path-image",
+	    "artist_name": "Artist 1",
+	    "artist_image": "path-image",
+	    "album_name": "Album 1",
+	    "album_image": "path-image",
+	    "favourites": 0,
+	    "likes": 0,
+	    "dislikes": 0,
+	    "duration": "5:00"
+	}, {
+	    "song_name": "Song 1",
+	    "source_file": "source-file",
+	    "song_image": "path-image",
+	    "playlist_name": "Playlist 1",
+	    "playlist_image": "path-image",
+	    "artist_name": "Artist 1",
+	    "artist_image": "path-image",
+	    "album_name": "Album 1",
+	    "album_image": "path-image",
+	    "favourites": 0,
+	    "likes": 0,
+	    "dislikes": 0,
+	    "duration": "5:00"
+	}, {
+	    "song_name": "Song 1",
+	    "source_file": "source-file",
+	    "song_image": "path-image",
+	    "playlist_name": "Playlist 1",
+	    "playlist_image": "path-image",
+	    "artist_name": "Artist 1",
+	    "artist_image": "path-image",
+	    "album_name": "Album 1",
+	    "album_image": "path-image",
+	    "favourites": 0,
+	    "likes": 0,
+	    "dislikes": 0,
+	    "duration": "5:00"
+	}
+]
+
