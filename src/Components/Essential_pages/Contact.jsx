@@ -9,6 +9,9 @@ import SubmitButton from "../Images/Icons/submit.svg";
 import SearchGoogle from "../Images/Icons/search-google.svg";
 
 class Contact extends Component {
+	state = {
+		inputs: ["Name.", "Email.", "Phone.", "Message."],
+	};
 	render() {
 		return (
 			<div className="Contactc-Page">
@@ -27,50 +30,21 @@ class Contact extends Component {
 						<div className="contact-form">
 							<div className="text-contact">
 								<h className="FeedTitle">Feedback form</h>
-								<div className="inputs">
-									Name.
-									<div className="form-input">
-										<input
-											id="inp"
-											type="text"
-											name="Name"
-											placeholder="Name"
-										/>
-									</div>
-								</div>
-								<div className="inputs">
-									Email.
-									<div className="form-input">
-										<input
-											id="inp"
-											type="text"
-											name="Email"
-											placeholder="E-mail"
-										/>
-									</div>
-								</div>
-								<div className="inputs">
-									Phone.
-									<div className="form-input">
-										<input
-											id="inp"
-											type="text"
-											name="Phone"
-											placeholder="Phone"
-										/>
-									</div>
-								</div>
-								<div className="inputs">
-									Message.
-									<div className="form-input">
-										<input
-											id="inp"
-											type="text"
-											name="Message"
-											placeholder="Message"
-										/>
-									</div>
-								</div>
+								{this.state.inputs.map((item, index) => {
+									return (
+										<div className="inputs">
+											{item}
+											<div className="form-input">
+												<input
+													id="inp"
+													type="text"
+													name={item}
+													placeholder={item}
+												/>
+											</div>
+										</div>
+									);
+								})}
 							</div>
 							<div className="inputs-upload">
 								<div className="upload-text">

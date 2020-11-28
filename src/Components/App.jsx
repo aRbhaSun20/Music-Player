@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { CSSTransition } from "react-transition-group";
+
 import NavBar from "./Essential_pages/Nav_bar";
-import BottomBar from "./Essential_pages/Bottom_bar";
-import BottomMainbar from "./Essential_pages/BottomMainbar";
+import MusicBar from "./Essential_pages/Music_bar";
 import Home from "./Essential_pages/Home";
 import Settings from "./Essential_pages/Settings";
 import NowPlaying from "./Essential_pages/Now_Playing";
@@ -16,6 +17,7 @@ import Contact from "./Essential_pages/Contact";
 import LogIn from "./Essential_pages/LogIn";
 import SigUp from "./Essential_pages/SignUp";
 import Preferences from "./Essential_pages/Preferences";
+import privacyPolicy from "./Essential_pages/privacyPolicy";
 
 import "./Styles/style.css";
 let socket;
@@ -36,18 +38,18 @@ class App extends Component {
 
 	componentDidMount() {
 		const { endpoint } = this.state;
-		socket = socketIOClient(endpoint);
-		socket.on("FromAPI", () => console.log("connected to backend"));
-		socket.on("MusicData", (data) => {
-			console.log("music data received");
-			this.setState({ musicData: data });
-			this.setState({ musicLength: data.length });
-		});
-		socket.on("BrowseMusicData", (data) => {
-			console.log("browse data received");
-			this.setState({ browsemusicData: data });
-			this.setState({ browseLength: data.length });
-		});
+		// socket = socketIOClient(endpoint);
+		// socket.on("FromAPI", () => console.log("connected to backend"));
+		// socket.on("MusicData", (data) => {
+		// 	console.log("music data received");
+		// 	this.setState({ musicData: data });
+		// 	this.setState({ musicLength: data.length });
+		// });
+		// socket.on("BrowseMusicData", (data) => {
+		// 	console.log("browse data received");
+		// 	this.setState({ browsemusicData: data });
+		// 	this.setState({ browseLength: data.length });
+		// });
 	}
 
 	changeTheme = (data) => {
@@ -88,14 +90,17 @@ class App extends Component {
 		console.log(data);
 		socket.emit("signUpUser", data);
 	};
-	
+
 	render() {
 		return (
 			<Router>
-				<div className={`${this.state.theme ? " main-dark " : "main-light"}`}>
-					<NavBar changeTheme={this.changeTheme} />
-					<section className="page1">
-						<Switch>
+				<Switch>
+					<div className={`${this.state.theme ? " main-dark " : "main-light"}`}>
+						<NavBar
+							changeTheme={this.changeTheme}
+							nowPlaying={this.nowPlaying}
+						/>
+						<section className="page1">
 							<Route
 								path="/"
 								exact
@@ -141,16 +146,16 @@ class App extends Component {
 								exact
 								render={() => <SigUp signUpUserData={this.signUpUserData} />}
 							/>
-						</Switch>
-						<BottomMainbar nowPlaying={this.nowPlaying} />
-					</section>
-					<BottomBar
-						changenow={this.state.nowPlaying}
-						currentMusic={this.currentSong}
-						listLength={this.state.musicLength}
-					/>
-					<EndingPage />
-				</div>
+							<Route path="/privacy" component={privacyPolicy} />
+						</section>
+						<MusicBar
+							changenow={this.state.nowPlaying}
+							currentMusic={this.currentSong}
+							listLength={this.state.musicLength}
+						/>
+						<EndingPage />
+					</div>
+				</Switch>
 				<ModalSection />
 			</Router>
 		);

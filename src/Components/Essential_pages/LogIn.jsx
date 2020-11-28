@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 import "../Styles/style7.css";
 import arrow from "../Images/Icons/arrow.svg";
-import wall1 from "../Images/Icons/wallpaper1.png";
-import wall2 from "../Images/Icons/wallpaper2.png";
+import wall from "../Images/Icons/log.svg";
 
 class LogIn extends Component {
 	state = {
@@ -35,10 +34,13 @@ class LogIn extends Component {
 	render() {
 		return (
 			<div className="login">
+				<div className="images">
+					<img src={wall} alt=""/>
+				</div>
 				<div className="loginItems">
 					<div className="loginTitle">Log in.</div>
 					<div className="login-data">
-						Login with your data you enetered during your registration{" "}
+						Login with your data you enetered during your registration
 					</div>
 					<div className="email">
 						<div>Your E-mail</div>
@@ -86,10 +88,6 @@ class LogIn extends Component {
 							<div className="specify-text-forgot"> Forgot Password? </div>
 						</div>
 					</div>
-				</div>
-				<div className="wallpapers">
-					<img className="wallpaper1" src={wall1} alt="wall1" />
-					<img className="wallpaper2" src={wall2} alt="wall2" />
 				</div>
 			</div>
 		);

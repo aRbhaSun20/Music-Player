@@ -1,35 +1,57 @@
 .login {
     display: flex;
     /* background: linear-gradient(to bottom right , green,rgba(34, 34, 233, 0.63)); */
-    background-color: #2d26265a;
-    opacity: 0.9;
-    width: 50em;
+    justify-content: space-between;
+    align-items: center;
+    /* opacity: 0.9; */
+    width: 100%;
     height: 65em;
-    margin-left: 5em;
-
+    margin: 0em 5em;
     font-size: 12px;
+}
+
+.login .images img {
+    scale: 1.1;
+    margin-top: -5em;
+    margin-left: 10em;
+} 
+.sigin .images img {
+    scale: 1.1;
+    margin-left: 10em;
 }
 
 .sigin {
     display: flex;
     /* background: linear-gradient(to bottom right , green,rgba(34, 34, 233, 0.63)); */
-    background-color: #2d26265a;
-    opacity: 0.9;
-    width: 62em;
-    height: 65em;
-    margin-left: 5em;
-
+    justify-content: space-between;
+    align-items: center;
+    /* opacity: 0.9; */
+    width: 100%;
+    height: 60em;
+    margin: 0em 5em;
     font-size: 12px;
+}
+.sigin
+.loginItems{
+    margin-top: 15em;
+    width: 50em;
 }
 
 .loginItems {
-    display: grid;
+    scale: 1.05;
+    margin-top: 0.5em;
+    margin-right: 10em;
+    width: 50em;
+    padding: 5em;
+    background-color: #2d2626;
+    display: flex;
+    flex-direction: column;
     margin-left: 5em;
     margin-bottom: 2em;
 }
 
 .loginTitle {
-    margin: 35px 35px 35px 0px;
+    margin: 0px 0px 35px 0px;
     color: rgb(224, 224, 224);
     font-size: 30px;
 }
@@ -70,16 +92,11 @@
 .keeplogged {
     display: flex;
     color: #a0a0a0;
-    width: 13em;
+    width: 12em;
     /* margin-top: 2em; */
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     /* margin: 40px 40px 40px 0px; */
-}
-
-.keeplogged input {
-    position: absolute;
-    left: 8em;
-    /* padding-bottom: 20px; */
 }
 
 .correct {
@@ -157,7 +174,7 @@
 }
 
 .inputs {
-    width: 55vh;
+    width: 50vh;
     height: 6vh;
     /* position: absolute; */
     background-color: transparent;
@@ -171,7 +188,7 @@
 
 .input-box {
     margin-top: 20px;
-    width: 55vh;
+    width: 50vh;
     height: 6vh;
     border-radius: 5px;
     border: 1px solid #707070;
@@ -289,7 +306,8 @@
 }
 
 .prefer .artist img {
-    width: 10em;
+    max-width: 10em;
+    min-height: 10em;
     border: 2px solid rgb(139, 125, 125);
     margin-top: 2em;
 }

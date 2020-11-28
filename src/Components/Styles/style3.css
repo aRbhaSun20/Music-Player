@@ -2,18 +2,6 @@
   overflow: hidden;
 }
 
-
-.Now-playing .search-bar-now-playing {
-  transform: scale(0.8);
-  position: absolute;
-  display: flex;
-  top: 5em;
-  left: 35%;
-  min-width: 500px;
-  min-height: 40px;
-  background-color: #170c57;
-}
-
 .Now-playing .current-song-playing {
   /* opacity: 0; */
   min-height: 3.5em;
@@ -79,43 +67,35 @@
   position: absolute;
   opacity: 1;
   top: 27em;
-  left: 6.5em;
+  left: 20em;
 }
 
 .Now-playing .close-icon {
   z-index: 1;
 }
+.Now-playing .song{
+    display: flex;
 
+    width: 80em;
+    margin: 2em auto;
+    height: 7vh;
+    padding: 1em;
+    justify-content: space-around;
+    align-content: center;
+}
 .Now-playing .song-details {
-  opacity: 0.9;
-  width: 100em;
-  padding-bottom: 12px;
-  padding-top: 20px;
-  color: #b0aeae;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  opacity: 0.9;
-  scale: 1.1;
-  width: 100em;
+  background: rgba(255, 255, 255, 0.034);
+  opacity: 0;
   height: 7vh;
-  padding: 0 30px;
-  padding-bottom: 12px;
-  margin-bottom: 2.5em;
-  padding-top: 20px;
-
+  scale: 1.1;
+  padding: 0 2em;
   color: #b0aeae;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 130vh;
-  margin-left: 18%;
-  background: rgba(255, 255, 255, 0.034);
-}
-
-.Now-playing .main-song-lists {
-  padding-top: 3em;
+  z-index: 10;
+  width: 105vh;
+  transform: translateX(-2em);
 }
 
 .Now-playing .album-song-now .song-details-now .song {

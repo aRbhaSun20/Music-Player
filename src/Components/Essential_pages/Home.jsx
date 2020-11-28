@@ -4,10 +4,8 @@ import AlbumSection from "./AlbumSection";
 
 import "../Styles/style.css";
 
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 import playlist_icon from "../Images/Icons/Playlist.png";
-
+import Search_Icon from "../Images/Icons/Search-Icon.svg";
 import play_previous_icon from "../Images/Icons/PLay-Previous-big.svg";
 import play_next_big_icon from "../Images/Icons/Play-Next-big.svg";
 
@@ -25,10 +23,24 @@ class Home extends Component {
 						src={playlist_icon}
 						alt="playlist-add"
 					/>
-					<div className="Album-Image-Section">
-						<div className="album-section">
-							<AlbumSection />
+					<div className="search-bar">
+						<input
+							type="text"
+							placeholder="Search for Songs, Artist and More"
+						/>
+						<div className="Search-icon-text">
+							<img
+								src={Search_Icon}
+								alt="search-icon"
+								className="Search-icon"
+							/>
+							<div className="text">
+								Search
+							</div>
+							
 						</div>
+					</div>
+					<div className="Album-Image-Section">
 						<a
 							href="#carouselExampleControls"
 							role="button"
@@ -42,6 +54,9 @@ class Home extends Component {
 							/>
 							<span className="sr-only">Previous</span>
 						</a>
+						<div className="album-section">
+							<AlbumSection />
+						</div>
 						<a
 							href="#carouselExampleControls"
 							role="button"

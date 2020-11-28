@@ -98,9 +98,6 @@ input:checked+.slider:before {
   background: #00bfffcc;
 }
 
-/*------ ADDED CSS ---------*/
-.on {}
-
 .on,
 .off {
   color: black;
@@ -124,9 +121,6 @@ input:checked+.slider .off {
   display: none;
 }
 
-/*--------- END --------*/
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }

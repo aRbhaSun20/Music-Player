@@ -2,11 +2,39 @@ import React, { Component } from "react";
 
 import "../Styles/style.css";
 
-import AsalMein from "../Images/final-album/Asal Mein.png";
-import Baarish from "../Images/final-album/Baarish lete aana.png";
-import Arijth_album from "../Images/final-album/arijith-song.png";
+import hawaBanke from "../Images/Artist/hawaBanke.jpg";
+import hawaBanke2 from "../Images/Artist/hawaBanke2.jpg";
+import kinnasonna from "../Images/Artist/kinnasonna.jpg";
+import vaaste from "../Images/Artist/vaaste.jpg";
+import ruladiya from "../Images/Artist/ruladiya.jpg";
+import amitabh from "../Images/Artist/amitabh4.jpg";
+import arijith from "../Images/Artist/arijth4.jpg";
+import asalMein from "../Images/Artist/asal-mein.jpg";
+import baarish from "../Images/Artist/baarish.jpg";
+import downtown from "../Images/Artist/downtown.jpg";
+import ishareTere from "../Images/Artist/ishareTere.jpg";
+import lahore from "../Images/Artist/lahore.jpg";
+import slowly from "../Images/Artist/slowly-slowly.jpg";
 
 class AlbumSection extends Component {
+	state = {
+		albumImages: [
+			hawaBanke,
+			hawaBanke2,
+			kinnasonna,
+			vaaste,
+			ruladiya,
+			arijith,
+			asalMein,
+			baarish,
+			baarish,
+			downtown,
+			ishareTere,
+			lahore,
+			slowly,
+		],
+	};
+
 	render() {
 		return (
 			<div
@@ -15,37 +43,25 @@ class AlbumSection extends Component {
 				className="carousel slide carousel-fade"
 				data-ride="carousel"
 			>
-				<ol className="carousel-indicators">
-					<li
-						className="active"
-						data-target="#carouselExampleFade"
-						data-slide-to={0}
-					/>
-					<li data-target="#carouselExampleFade" data-slide-to={1} />
-					<li data-target="#carouselExampleFade" data-slide-to={2} />
-				</ol>
 				<div className="carousel-inner">
 					<div className="carousel-item active">
 						<img
-							src={AsalMein}
-							className="d-block w-100 motion-album"
+							src={amitabh}
+							className="d-block motion-album"
 							alt="songs-list"
 						/>
 					</div>
-					<div className="carousel-item">
-						<img
-							src={Baarish}
-							className="d-block w-100 motion-album"
-							alt="songs-list"
-						/>
-					</div>
-					<div className="carousel-item">
-						<img
-							src={Arijth_album}
-							className="d-block w-100 motion-album"
-							alt="songs-list"
-						/>
-					</div>
+					{this.state.albumImages.map((album, index) => {
+						return (
+							<div className="carousel-item" key={index}>
+								<img
+									src={album}
+									className="d-block motion-album"
+									alt="songs-list"
+								/>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		);
