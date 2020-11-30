@@ -18,62 +18,6 @@ import ishareTere from "../Images/Artist/ishareTere.jpg";
 import lahore from "../Images/Artist/lahore.jpg";
 import slowly from "../Images/Artist/slowly-slowly.jpg";
 
-// const AlbumSection = ({ element = "glide", options }) => {
-// const [slider] = useState(
-// new Glide(`.${element}`, {
-// type: "slider",
-// startAt: 1,
-// focusAt: 2,
-// perView: 3,
-// gap: 70,
-// autoplay: true,
-// animationDuration: 4000,
-// rewindDuration: 15000,
-// animationTimingFunc: "ease-in",
-// })
-// );
-
-// const albumImages = [
-// hawaBanke,
-// amitabh,
-// kinnasonna,
-// vaaste,
-// ruladiya,
-// arijith,
-// asalMein,
-// baarish,
-// downtown,
-// ishareTere,
-// lahore,
-// slowly,
-// ];
-
-// useEffect(() => {
-// slider.mount();
-
-// slider.on("run.before", (evnt) => {});
-// return () => slider.destroy();
-// });
-
-// return (
-// <div className="album-section">
-// <div className={element}>
-// <div className="glide__track" data-glide-el="track">
-// <ul className="glide_slides">
-// {albumImages.map((slide, index) => {
-// return (
-// <li className="glide__slide" key={index}>
-// <img src={slide} alt="slides" className={index} />
-// </li>
-// );
-// })}
-// </ul>
-// </div>
-// </div>
-// </div>
-// );
-// };
-
 import React, {Component} from "react";
 
 class AlbumSection extends Component {
