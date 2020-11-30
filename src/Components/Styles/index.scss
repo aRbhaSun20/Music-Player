@@ -9,6 +9,8 @@ body {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     scroll-padding-top: 100px;
+    padding: 0;
+    margin: 0;
 }
 
 section {
@@ -21,7 +23,7 @@ section {
     .nav-bar {
         align-items: center;
         background-color: #263238;
-        max-height: 12vh;
+        min-height: 10vh;
 
         .title {
             display: flex;
@@ -90,17 +92,25 @@ section {
         }
 
         .main-menu-list {
-            color: #cfcfcf;
+            color: #cfcfcf77;
+            font-size: 16px;
             font-family: sans-serif;
             text-align: center;
+            transition: font-size .1s ease-out;
+        }
+
+        .activeLink {
+            color: rgb(8, 255, 8);
+            font-size: 23px;
         }
 
     }
 
     .search-songs {
+
         position: absolute;
         top: 13em;
-        left: 45em;
+        left: 42em;
 
         .search-bar {
             margin: auto auto;
@@ -177,35 +187,6 @@ div.main-light {
         margin: 2em 3em;
         scale: 1;
     }
-
-    .Album-Image-Section {
-        margin: auto;
-        width: 50%;
-        transform: scale(1);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            scale: 0.9;
-        }
-
-        .album-section {
-            .motion-album {
-                margin: auto;
-                display: flex;
-                border-radius: 20px;
-                opacity: 1;
-                transition: opacity 2s ease-in;
-                object-fit: fit;
-                width: 30em;
-                height: 25em;
-            }
-        }
-    }
-
-
 
     .feature-section {
         margin-top: -0.5em;
@@ -333,12 +314,20 @@ div.main-light {
 
         }
 
+        transform: translateY(4.2em);
+        transform-origin: bottom;
+        transition: transform .5s ease-in-out;
+
+        &:hover {
+            transform: translateY(0em);
+        }
     }
 
     .modified {
         background: transparent;
         position: absolute;
         top: 7.5em;
+        transform: translateY(0em);
         left: 13em;
 
         .song-playing-album {
@@ -396,7 +385,9 @@ div.main-light {
             top: 19em;
             left: 68em;
         }
+
     }
+
 }
 
 .browse {
@@ -655,7 +646,7 @@ div.main-light {
 .settings-menu {
     scale: 1.2;
     width: 70%;
-    margin: 4em auto;
+    margin: 10em auto;
     max-height: 75vh;
     display: flex;
     width: 120vh;
@@ -671,10 +662,23 @@ div.main-light {
     }
 
     .texts {
-        color: #F3E288;
+        color: #ffe76d;
         font-size: 16.5px;
         padding-top: 5px;
+        opacity: 1;
+    }
+
+    .logoutBut {
+        position: absolute;
+        bottom: -4em;
+        background: transparent;
+        color: #fd7272;
         opacity: 0.9;
+        width: 8em;
+        text-align: center;
+        height: 1.8em;
+        border: 1px solid rgb(255, 0, 0);
+        margin-top: 1em;
     }
 
     .subtext {
@@ -921,7 +925,7 @@ div.main-light {
                         justify-content: space-evenly;
                         margin-left: 1.9em;
                         font-size: 17px;
-                        height: 5em;
+                        height: 5.5em;
                         // opacity: 0;
 
                         .form-input input {
@@ -929,20 +933,15 @@ div.main-light {
                             font-size: 13px;
                             outline: auto thick;
                             opacity: 0.9;
-                            max-width: 24em;
-                            max-height: 3em;
+                            min-width: 24em;
+                            min-height: 2.5em;
                             padding-left: 10px;
                         }
                     }
                 }
             }
 
-            #inp {
-                width: 350px;
-                height: 50px;
-                border: none;
-                background-color: #ece8ff;
-            }
+
 
             .inputs-upload {
                 margin-top: 3.5em;
@@ -963,13 +962,19 @@ div.main-light {
                     }
                 }
 
-                #submitbtn {
+                button.feedBackSubmit {
+                    min-width: 10em;
+                    height: 2.8em;
                     position: absolute;
-                    right: 0;
-                    scale: 1.1;
-                    bottom: 3.1em;
-                    cursor: pointer;
+                    top: 32em;
+                    right: 0em;
+                    color:#ece8ff;
+                    letter-spacing: 5px;
+                    font-size: 16px;
+                    border-radius: 10px 0px 0px 10px;
+                    background-color: rgb(14, 14, 75);
                 }
+
             }
 
         }
@@ -1129,8 +1134,10 @@ div.main-light {
     margin: 0em 5em;
     font-size: 12px;
 
-    .sigin .images img {
+    .images img {
         scale: 1.1;
+        // opacity: 0;
+        // min-width: 100em;
         margin-left: 10em;
     }
 
@@ -1255,14 +1262,16 @@ div.main-light {
 }
 
 .prefer {
+    position: absolute;
     width: 120vh;
     height: 75vh;
-    background: radial-gradient(#62627395 0.5%, #0d0a1b 50%);
+    background: radial-gradient(#626273 0.5%, #0d0a1b 50%);
     display: flex;
     flex-direction: column;
-    margin-top: 2em;
-    margin-left: 25em;
+    margin-top: 7em;
+    margin-left: -25em;
     align-items: center;
+    justify-content: center;
 
     .heading {
         margin-top: 2em;
@@ -1362,4 +1371,59 @@ div.main-light {
     align-items: center;
     justify-content: center;
     padding: 4em;
+}
+
+.Album-Image-Section {
+    margin: 2em auto;
+    width: 90%;
+    // transform: scale(1);
+    // display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        scale: 0.9;
+    }
+
+    .album-section {
+
+        //     .motion-album {
+        //         margin: auto;
+        //         display: flex;
+        //         border-radius: 20px;
+        //         opacity: 1;
+        //         transition: opacity 2s ease-in;
+        //         object-fit: fit;
+        //         width: 30em;
+        //         height: 25em;
+        //     }
+        .glide_slides {
+            display: flex;
+        }
+
+        .glide__slide {
+            list-style: none;
+            display: flex;
+            margin: auto;
+            border-radius: 20px;
+            opacity: .5;
+            scale: 0.75;
+            transition: opacity 2s ease-in, scale 5s ease-in;
+            object-fit: fit;
+
+            img {
+                width: 35em;
+                height: 25em;
+                border-radius: 20px;
+            }
+        }
+
+        .glide__slide--active {
+            opacity: 1;
+            scale: 1;
+        }
+
+    }
+
 }

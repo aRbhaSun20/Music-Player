@@ -5,13 +5,21 @@ import "../Styles/index.css";
 import pinPoint from "../Images/Icons/pinpoint.svg";
 import mapImg from "../Images/Icons/map.png";
 import uploadCloud from "../Images/Icons/upload.svg";
-import SubmitButton from "../Images/Icons/submit.svg";
 import SearchGoogle from "../Images/Icons/search-google.svg";
 
 class Contact extends Component {
 	state = {
-		inputs: ["Name.", "Email.", "Phone.", "Message."],
+		inputs: ["Name", "Email", "Phone", "Message"],
 	};
+	initialState = ["", "", "", ""];
+	handleChange = (evnt) => {
+		evnt.preventDefault();
+		this.initialState[evnt.target.name] = evnt.target.value;
+	};
+	handleSubmit = (evnt) => {
+		evnt.preventDefault()
+		console.log(this.state.data)
+	}	
 	render() {
 		return (
 			<div className="Contactc-Page">
@@ -29,17 +37,18 @@ class Contact extends Component {
 						</div>
 						<div className="contact-form">
 							<div className="text-contact">
-								<h className="FeedTitle">Feedback form</h>
+								<h1 className="FeedTitle">Feedback form</h1>
 								{this.state.inputs.map((item, index) => {
 									return (
-										<div className="inputs">
+										<div className="inputs" key={index}>
 											{item}
 											<div className="form-input">
 												<input
 													id="inp"
 													type="text"
-													name={item}
+													name={index}
 													placeholder={item}
+													onChange={this.handleChange}
 												/>
 											</div>
 										</div>
@@ -51,7 +60,7 @@ class Contact extends Component {
 									<img src={uploadCloud} alt="Upload" />
 									Upload file
 								</div>
-								<img id="submitbtn" src={SubmitButton} alt="Submit" />
+								<button onClick={this.handleSubmit} className="feedBackSubmit">Submit </button>
 							</div>
 						</div>
 					</div>

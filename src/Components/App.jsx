@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { CSSTransition } from "react-transition-group";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "./Essential_pages/Nav_bar";
 import MusicBar from "./Essential_pages/Music_bar";
@@ -10,46 +10,51 @@ import Home from "./Essential_pages/Home";
 import Settings from "./Essential_pages/Settings";
 import NowPlaying from "./Essential_pages/Now_Playing";
 import Browse from "./Essential_pages/Browse";
-import Share from "./Essential_pages/Share";
-import ModalSection from "./Essential_pages/ModalSection";
 import EndingPage from "./Essential_pages/EndingPage";
 import Contact from "./Essential_pages/Contact";
 import LogIn from "./Essential_pages/LogIn";
 import SigUp from "./Essential_pages/SignUp";
-import Preferences from "./Essential_pages/Preferences";
 import privacyPolicy from "./Essential_pages/privacyPolicy";
 
-import "./Styles/style.css";
+import "./Styles/index.css";
 let socket;
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			response: false,
-			endpoint: "localhost:4000",
+			endpoint: "localhost:9050",
 			musicData: [],
 			musicLength: 0,
 			browsemusicData: [],
 			browseLength: 0,
 			nowPlaying: false,
 			theme: true,
+			userId: null,
+			userEmail: "unknown",
 		};
 	}
 
 	componentDidMount() {
 		const { endpoint } = this.state;
-		// socket = socketIOClient(endpoint);
-		// socket.on("FromAPI", () => console.log("connected to backend"));
-		// socket.on("MusicData", (data) => {
-		// 	console.log("music data received");
-		// 	this.setState({ musicData: data });
-		// 	this.setState({ musicLength: data.length });
-		// });
-		// socket.on("BrowseMusicData", (data) => {
-		// 	console.log("browse data received");
-		// 	this.setState({ browsemusicData: data });
-		// 	this.setState({ browseLength: data.length });
-		// });
+		socket = socketIOClient(endpoint);
+		socket.on("FromAPI", () => console.log("connected to backend"));
+		socket.on("MusicData", (data) => {
+			console.log("music data received");
+			this.setState({ musicData: data });
+			this.setState({ musicLength: data.length });
+		});
+		socket.on("BrowseMusicData", (data) => {
+			console.log("browse data received");
+			this.setState({ browsemusicData: data });
+			this.setState({ browseLength: data.length });
+		});
+		socket.on("currentUser", (data) => {
+			console.log("current User data received");
+			console.log(data)
+			this.setState({ userId: data[0].login_id });
+			this.setState({ userEmail: data[0].email });
+		});
 	}
 
 	changeTheme = (data) => {
@@ -81,24 +86,22 @@ class App extends Component {
 		socket.emit("deleteData", data);
 	};
 
-	loginUserData = (data) => {
-		console.log(data);
-		socket.emit("loginUser", data);
-	};
-
-	signUpUserData = (data) => {
-		console.log(data);
-		socket.emit("signUpUser", data);
-	};
+	loginUserData = (data) => socket.emit("loginUser", data);
+	signUpUserData = (data) => socket.emit("signUpUser", data);
+	searchSongData = (data) => socket.emit("searchBrowse", data);
+	handleFeedback = (data) => socket.emit("feedbackData", data);
+	logOutUser = () => socket.emit("logoutUser", this.state.userId);
 
 	render() {
 		return (
 			<Router>
 				<Switch>
+					<React.Fragment>
 					<div className={`${this.state.theme ? " main-dark " : "main-light"}`}>
 						<NavBar
 							changeTheme={this.changeTheme}
 							nowPlaying={this.nowPlaying}
+							handleSearch={this.searchSongData}
 						/>
 						<section className="page1">
 							<Route
@@ -113,7 +116,13 @@ class App extends Component {
 							/>
 							<Route
 								path="/settings"
-								render={() => <Settings changetheme={this.changeTheme} />}
+								render={() => (
+									<Settings
+										userEmail={this.state.userEmail}
+										changetheme={this.changeTheme}
+										handleLogout={this.logOutUser}
+									/>
+								)}
 							/>
 							<Route
 								path="/now_playing"
@@ -133,9 +142,11 @@ class App extends Component {
 									/>
 								)}
 							/>
-							<Route path="/share" component={Share} />
-							<Route path="/preference" component={Preferences} />
-							<Route path="/contact" exact render={() => <Contact />} />
+							<Route
+								path="/contact"
+								exact
+								render={() => <Contact handleFeedback={this.handleFeedback} />}
+							/>
 							<Route
 								path="/login"
 								exact
@@ -155,8 +166,8 @@ class App extends Component {
 						/>
 						<EndingPage />
 					</div>
+					</React.Fragment>
 				</Switch>
-				<ModalSection />
 			</Router>
 		);
 	}

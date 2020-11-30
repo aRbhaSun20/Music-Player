@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+
+import Preferences from "./Preferences";
 
 import "../Styles/index.css";
 
 class Settings extends Component {
-	state = {};
+	state = {
+		show: false,
+	};
+
+	handleClose = () => this.setState({ show: false });
+	handleShow = () => this.setState({ show: true });
 
 	theme = false;
 
 	clickedme = () => {
 		this.theme = !this.theme;
 		this.props.changetheme(this.theme);
+	};
+	handleLogOut = (evnt) => {
+		evnt.preventDefault();
+		this.props.handleLogout();
 	};
 	render() {
 		return (
@@ -23,18 +35,21 @@ class Settings extends Component {
 						</Link>
 
 						<div className="texts">Login Account</div>
-						<div className="subtext">bla bla @gmail.com</div>
+						<div className="subtext">{this.props.userEmail}</div>
 						<div className="texts">Music Directory</div>
-						<div className="subtext">bla bla blasdsafdk</div>
+						<div className="subtext">/Songs</div>
 						<div className="texts">Refresh</div>
 					</div>
 					<div className="second-section">
 						<div className="heading">GENERAL</div>
-						<Link to="/preference">
-							<div className="texts" style={{ cursor: "pointer" }}>
-								Improve Your Recommendations
-							</div>
-						</Link>
+
+						<div
+							className="texts"
+							style={{ cursor: "pointer" }}
+							onClick={this.handleShow}
+						>
+							Improve Your Recommendations
+						</div>
 
 						<div className="subtext">choose your language here</div>
 						<div className="texts">Sleep Timer</div>
@@ -79,10 +94,23 @@ class Settings extends Component {
 									<span className="on">Light Mode</span>
 									<span className="off">Dark Mode</span>
 								</div>
+								<div className="logoutBut" onClick={this.handleLogOut}>
+									LogOut Now
+								</div>
 							</label>
 						</div>
 					</div>
 				</div>
+				<Modal
+					show={this.state.show}
+					onHide={this.handleClose}
+					keyboard={false}
+					style={{ background: "transparent" }}
+				>
+					<Modal.Body>
+						<Preferences />
+					</Modal.Body>
+				</Modal>
 			</div>
 		);
 	}

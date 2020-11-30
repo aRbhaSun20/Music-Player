@@ -31,40 +31,63 @@ create TABLE songData(
   FOREIGN KEY(album_id) REFERENCES albumData(album_id),
   FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
 );
-CREATE TABLE User(
+create TABLE recentData(
+  song_id INT AUTO_INCREMENT,
+  song_name VARCHAR(100) NOT NULL,
+  song_path VARCHAR(50) DEFAULT 'unknown',
+  artist_id INT(50) NOT NULL,
+  album_id INT(50) NOT NULL,
+  playlist_id INT(50),
+  duration VARCHAR(10) NOT NULL,
+  likes INT(50) DEFAULT 0,
+  dislikes INT(50) DEFAULT 0,
+  PRIMARY KEY(song_id),
+  FOREIGN KEY(artist_id) REFERENCES artistData(artist_id),
+  FOREIGN KEY(album_id) REFERENCES albumData(album_id),
+  FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
+);
+create TABLE browseData(
+  song_id INT AUTO_INCREMENT,
+  song_name VARCHAR(100) NOT NULL,
+  song_path VARCHAR(50) DEFAULT 'unknown',
+  artist_id INT(50) NOT NULL,
+  album_id INT(50) NOT NULL,
+  playlist_id INT(50),
+  duration VARCHAR(10) NOT NULL,
+  likes INT(50) DEFAULT 0,
+  dislikes INT(50) DEFAULT 0,
+  PRIMARY KEY(song_id),
+  FOREIGN KEY(artist_id) REFERENCES artistData(artist_id),
+  FOREIGN KEY(album_id) REFERENCES albumData(album_id),
+  FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
+);
+CREATE TABLE user(
   user_id INT AUTO_INCREMENT,
   user_name VARCHAR (50) NOT NULL,
   membershipStatus Varchar(5) default 'false',
-  mail VARCHAR (50) NOT NULL,
+  email VARCHAR (50) DEFAULT "unknown",
   password VARCHAR (20) NOT NULL,
   loginStatus VARCHAR(5) DEFAULT 'false',
   createTime datetime NOT NULL default NOW(),
   lastlogin datetime NOT NULL default NOW(),
-  verifyEmailStatus varchar(5) default 'false',
+  verifyEmailStatus varc  har(5) default 'false',
   PRIMARY KEY(user_id)
 );
-CREATE TABLE FeedbackForm(
+CREATE TABLE feedbackForm(
   feedback_id int AUTO_INCREMENT,
-  name VARCHAR(50) DEFAULT "unknown",
-  email VARCHAR(50) DEFAULT "unknown",
+  name VARCHAR(50) NOT NULL  DEFAULT "unknown",
+  email VARCHAR(50) not NULL DEFAULT "unknown",
   phone INT(15) DEFAULT NULL,
   message VARCHAR(100) DEFAULT "unknown",
   creationTime DATETIME NOT NULL default NOW(),
-  mailsentStatus Varchar(5) default 'false',
+  mailStatus Varchar(5) NOT NULL default 'false',
   PRIMARY KEY(feedback_id)
 );
-
-select
-  song_id,
-  song_name,
-  playlist_name,
-  artist_name,
-  album_name,
-  duration,
-  likes,
-  dislikes
-from
-  songData
-  INNER JOIN artistData ON songData.artist_id = artistData.artist_id
-  INNER JOIN albumData ON songData.album_id = albumData.album_id
-  INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
+CREATE TABLE loginData(
+  login_id int AUTO_INCREMENT,
+  password VARCHAR (20) NOT NULL,
+  email VARCHAR(50) DEFAULT "unknown",
+  loginTime DATETIME NOT NULL default NOW(),
+  loginStatus VARCHAR(5) default 'true',
+  PRIMARY KEY(login_id)
+);

@@ -13,7 +13,7 @@ class Share extends Component {
 	render() {
 		return (
 			<div className="Share-page">
-				<div id="share-bar" className="share-bar">
+				<div id="sharebar" className="share-bar">
 					<div className="top-bar-share">
 						<div className="top-bar-share-headings">
 							<div className="share-heading1">INDIA'S MODERN MUSIC APP</div>

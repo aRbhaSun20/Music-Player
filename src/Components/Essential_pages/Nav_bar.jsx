@@ -1,22 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Share from "./Share";
+import Modal from "react-bootstrap/Modal";
 
 import "../Styles/index.css";
 import Search_Icon from "../Images/Icons/Search-Icon.svg";
 
 class NavBar extends Component {
-	state = {};
+	state = {
+		show: false,
+	};
+
+	handleClose = () => this.setState({ show: false });
+	handleShow = () => this.setState({ show: true });
 
 	nowPlaying = () => {
-		console.log("not clicked");
 		this.props.nowPlaying(true);
 	};
 
 	clickedme = () => {
-		console.log("clickeme");
 		this.props.nowPlaying(false);
 	};
 
+	handleSearch = (evnt) => {
+		evnt.preventDefault();
+		if (evnt.target.value) {
+			this.props.handleSearch(evnt.target.value);
+		}
+	};
 	render() {
 		return (
 			<div className="nav-section">
@@ -26,70 +37,98 @@ class NavBar extends Component {
 					</div>
 					<ul className="nav-links">
 						<li>
-							<Link to="/" onClick={this.clickedme} className="main-menu-list">
+							<NavLink
+								activeClassName="activeLink"
+								to="/"
+								exact
+								onClick={this.clickedme}
+								className="main-menu-list"
+							>
 								Home
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link
+							<NavLink
+								activeClassName="activeLink"
 								to="now_playing"
+								exact
 								onClick={this.nowPlaying}
 								className="main-menu-list"
 							>
 								Now Playing
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link
-								to="now_playing"
+							<NavLink
+								activeClassName="activeLink"
+								to="recent_playing"
+								exact
 								onClick={this.nowPlaying}
 								className="main-menu-list"
 							>
 								Recently Played
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<div
-								className="premium"
-								data-toggle="modal"
-								data-target="#sharebar"
-								id="contact-icon"
-							>
+							<div className="premium" onClick={this.handleShow}>
 								Get premium Subscription
 							</div>
 						</li>
 						<li>
-							<Link to="settings" className="main-menu-list">
+							<NavLink
+								activeClassName="activeLink"
+								to="settings"
+								exact
+								onClick={this.clickedme}
+								className="main-menu-list"
+							>
 								Settings
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link to="signup" className="main-menu-list">
+							<NavLink
+								activeClassName="activeLink"
+								to="signup"
+								exact
+								onClick={this.clickedme}
+								className="main-menu-list"
+							>
 								Sign Up / Login
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link to="browse" className="main-menu-list">
+							<NavLink to="browse" className="main-menu-list">
 								<div className="search-songs">
 									<div className="search-bar">
-									<input
-										type="text"
-										placeholder="Search for Songs, Artist and More"
-									/>
-									<div className="Search-icon-text">
-										<img
-											src={Search_Icon}
-											alt="search-icon"
-											className="Search-icon"
+										<input
+											type="text"
+											placeholder="Search for Songs, Artist and More"
+											onChange={this.handleSearch}
 										/>
-										<div className="text">Search</div>
+										<div className="Search-icon-text">
+											<img
+												src={Search_Icon}
+												alt="search-icon"
+												className="Search-icon"
+											/>
+											<div className="text">Search</div>
+										</div>
 									</div>
 								</div>
-								</div>
-							</Link>
+							</NavLink>
 						</li>
 					</ul>
 				</nav>
+				<Modal
+					show={this.state.show}
+					onHide={this.handleClose}
+					keyboard={false}
+					style={{ background: "transparent" }}
+				>
+					<Modal.Body>
+						<Share />
+					</Modal.Body>
+				</Modal>
 			</div>
 		);
 	}
