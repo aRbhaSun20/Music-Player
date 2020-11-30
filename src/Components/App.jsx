@@ -32,8 +32,11 @@ class App extends Component {
 			theme: true,
 			userId: null,
 			userEmail: "unknown",
+			userName: "unknown",
 		};
 	}
+
+	initial = "unknown";
 
 	componentDidMount() {
 		const { endpoint } = this.state;
@@ -51,9 +54,10 @@ class App extends Component {
 		});
 		socket.on("currentUser", (data) => {
 			console.log("current User data received");
-			console.log(data)
+			console.log(data);
 			this.setState({ userId: data[0].login_id });
 			this.setState({ userEmail: data[0].email });
+			this.setState({ userEmail: data[0].user_name });
 		});
 	}
 
@@ -90,82 +94,95 @@ class App extends Component {
 	signUpUserData = (data) => socket.emit("signUpUser", data);
 	searchSongData = (data) => socket.emit("searchBrowse", data);
 	handleFeedback = (data) => socket.emit("feedbackData", data);
-	logOutUser = () => socket.emit("logoutUser", this.state.userId);
+	logOutUser = () => {
+		socket.emit("logoutUser", this.state.userId);
+		this.setState({ userEmail: this.initial });
+	};
 
 	render() {
 		return (
 			<Router>
 				<Switch>
 					<React.Fragment>
-					<div className={`${this.state.theme ? " main-dark " : "main-light"}`}>
-						<NavBar
-							changeTheme={this.changeTheme}
-							nowPlaying={this.nowPlaying}
-							handleSearch={this.searchSongData}
-						/>
-						<section className="page1">
-							<Route
-								path="/"
-								exact
-								render={() => (
-									<Home
-										deleteSongData={this.deleteSong}
-										musicalData={this.state.musicData}
-									/>
-								)}
+						<div
+							className={`${this.state.theme ? " main-dark " : "main-light"}`}
+						>
+							<NavBar
+								changeTheme={this.changeTheme}
+								nowPlaying={this.nowPlaying}
+								handleSearch={this.searchSongData}
 							/>
-							<Route
-								path="/settings"
-								render={() => (
-									<Settings
-										userEmail={this.state.userEmail}
-										changetheme={this.changeTheme}
-										handleLogout={this.logOutUser}
-									/>
-								)}
+							<section className="page1">
+								<Route
+									path="/"
+									exact
+									render={() => (
+										<Home
+											deleteSongData={this.deleteSong}
+											musicalData={this.state.musicData}
+										/>
+									)}
+								/>
+								<Route
+									path="/settings"
+									render={() => (
+										<Settings
+											userName={this.state.userName}
+											userEmail={this.state.userEmail}
+											changetheme={this.changeTheme}
+											handleLogout={this.logOutUser}
+										/>
+									)}
+								/>
+								<Route
+									path="/now_playing"
+									render={() => (
+										<NowPlaying
+											deleteSongData={this.deleteSong}
+											musicalData={this.state.musicData}
+										/>
+									)}
+								/>
+								<Route
+									path="/browse"
+									render={() => (
+										<Browse
+											deleteSongData={this.deleteSong}
+											musicalData={this.state.browsemusicData}
+										/>
+									)}
+								/>
+								<Route
+									path="/contact"
+									exact
+									render={() => (
+										<Contact handleFeedback={this.handleFeedback} />
+									)}
+								/>
+								<Route
+									path="/login"
+									exact
+									render={() => (
+										<LogIn
+											loginUserData={this.loginUserData}
+											userName={this.state.userName}
+										/>
+									)}
+								/>
+								<Route
+									path="/signup"
+									exact
+									render={() => <SigUp signUpUserData={this.signUpUserData} />}
+								/>
+								<Route path="/privacy" component={privacyPolicy} />
+							</section>
+							<MusicBar
+								changenow={this.state.nowPlaying}
+								currentMusic={this.currentSong}
+								listLength={this.state.musicLength}
 							/>
-							<Route
-								path="/now_playing"
-								render={() => (
-									<NowPlaying
-										deleteSongData={this.deleteSong}
-										musicalData={this.state.musicData}
-									/>
-								)}
-							/>
-							<Route
-								path="/browse"
-								render={() => (
-									<Browse
-										deleteSongData={this.deleteSong}
-										musicalData={this.state.browsemusicData}
-									/>
-								)}
-							/>
-							<Route
-								path="/contact"
-								exact
-								render={() => <Contact handleFeedback={this.handleFeedback} />}
-							/>
-							<Route
-								path="/login"
-								exact
-								render={() => <LogIn loginUserData={this.loginUserData} />}
-							/>
-							<Route
-								path="/signup"
-								exact
-								render={() => <SigUp signUpUserData={this.signUpUserData} />}
-							/>
-							<Route path="/privacy" component={privacyPolicy} />
-						</section>
-						<MusicBar
-							changenow={this.state.nowPlaying}
-							currentMusic={this.currentSong}
-							listLength={this.state.musicLength}
-						/>
-						<EndingPage />
-					</div>
+							<EndingPage />
+						</div>
 					</React.Fragment>
 				</Switch>
 			</Router>

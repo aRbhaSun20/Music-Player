@@ -17,7 +17,7 @@ body {
 
 section {
   padding-top: 5em;
-  min-height: 100vh;
+  min-height: 110vh;
   min-width: 100%;
 }
 
@@ -1145,6 +1145,7 @@ div.main-light {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1152,15 +1153,25 @@ div.main-light {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 65em;
+  height: 60em;
+  bottom: 2.4em;
+  left: -5em;
   margin: 0em 5em;
   font-size: 12px;
 }
 
 .login .images img {
   scale: 1.1;
-  margin-top: -5em;
+  margin-top: -6em;
   margin-left: 10em;
+}
+
+.login .popupMesage {
+  position: absolute;
+  top: -7em;
+  left: 3em;
+  background: white;
+  color: black;
 }
 
 .login .loginItems {
@@ -1309,6 +1320,9 @@ div.main-light {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
+  bottom: 18em;
+  left: -5em;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1316,7 +1330,8 @@ div.main-light {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 60em;
+  min-height: 35em;
+  max-height: 35em;
   margin: 0em 5em;
   font-size: 12px;
 }
@@ -1324,6 +1339,14 @@ div.main-light {
 .sigin .images img {
   scale: 1.1;
   margin-left: 10em;
+}
+
+.sigin .popupMesage {
+  position: absolute;
+  top: -7em;
+  left: 3em;
+  background: white;
+  color: black;
 }
 
 .sigin .loginItems {

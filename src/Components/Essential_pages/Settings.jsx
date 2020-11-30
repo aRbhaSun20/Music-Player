@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import Toast from "react-bootstrap/Toast";
 
 import Preferences from "./Preferences";
 
@@ -9,6 +10,7 @@ import "../Styles/index.css";
 class Settings extends Component {
 	state = {
 		show: false,
+		popShow: false,
 	};
 
 	handleClose = () => this.setState({ show: false });
@@ -20,13 +22,39 @@ class Settings extends Component {
 		this.theme = !this.theme;
 		this.props.changetheme(this.theme);
 	};
+
+	handlePopClose = (evnt) => {
+		this.setState({ show: false });
+	};
+
+	handleToggle = (evnt) => {
+		evnt.preventDefault();
+		this.setState({ show: true });
+	};
+
 	handleLogOut = (evnt) => {
 		evnt.preventDefault();
 		this.props.handleLogout();
+		this.handleToggle;
 	};
 	render() {
 		return (
 			<div className="settings-menu">
+				<Toast
+					className="popupMesage"
+					onClose={this.handlePopClose}
+					show={this.state.popShow}
+					delay={2000}
+					autohide
+				>
+					<Toast.Header>
+						<strong className="mr-auto">LogIN Status</strong>
+						<small>User with Email {this.props.userEmail} has Logged Out</small>
+					</Toast.Header>
+					<Toast.Body>
+						See you Soon {this.props.userName}!! Bro!!!
+					</Toast.Body>
+				</Toast>
 				<div className="first-sections">
 					<div className="first-section">
 						<div className="heading">ACCOUNT</div>

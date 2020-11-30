@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
+import Toast from "react-bootstrap/Toast";
 
 import "../Styles/index.css";
 
@@ -13,6 +14,7 @@ class SignUp extends Component {
 		Name: "",
 		Email: "",
 		Password: "",
+		show: false,
 	};
 
 	handleChange = (event) => {
@@ -32,13 +34,43 @@ class SignUp extends Component {
 		}
 	};
 
+	handleClose = (evnt) => {
+		this.setState({ show: false });
+	};
+
+	handleToggle = (evnt) => {
+		evnt.preventDefault();
+		this.setState({ show: true });
+	};
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.signUpUserData(this.state);
+		this.handleToggle
 	};
 	render() {
 		return (
 			<div className="sigin">
+				<Toast
+					className="popupMesage"
+					onClose={this.handleClose}
+					show={this.state.show}
+					delay={2000}
+					autohide
+				>
+					<Toast.Header>
+						<img
+							src="holder.js/20x20?text=%20"
+							className="rounded mr-2"
+							alt=""
+						/>
+						<strong className="mr-auto">SignUp Status</strong>
+						<small>New User with Email {this.state.Email} has Signned Up</small>
+					</Toast.Header>
+					<Toast.Body>
+						Welcome {this.state.Name}!! good to see you Bro!!!
+					</Toast.Body>
+				</Toast>
 				<div className="images">
 					<img src={wall} alt="" />
 				</div>

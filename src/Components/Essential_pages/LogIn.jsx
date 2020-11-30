@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-
+import Toast from "react-bootstrap/Toast";
 import "../Styles/index.css";
+
 import arrow from "../Images/Icons/arrow.svg";
 import wall from "../Images/Icons/log.svg";
 
@@ -10,6 +11,7 @@ class LogIn extends Component {
 	state = {
 		Email: "",
 		Password: "",
+		show: false,
 	};
 
 	handleChange = (event) => {
@@ -26,14 +28,39 @@ class LogIn extends Component {
 		}
 	};
 
+	handleClose = (evnt) => {
+		this.setState({ show: false });
+	};
+
+	handleToggle = (evnt) => {
+		evnt.preventDefault();
+		this.setState({ show: true });
+	};
+
 	HandleSubmit = (event) => {
 		event.preventDefault();
 		this.props.loginUserData(this.state);
+		this.handleToggle;
 	};
 
 	render() {
 		return (
 			<div className="login">
+				<Toast
+					className="popupMesage"
+					onClose={this.handleClose}
+					show={this.state.show}
+					delay={2000}
+					autohide
+				>
+					<Toast.Header>
+						<strong className="mr-auto">LogIN Status</strong>
+						<small>User with Email {this.state.Email} has Logged In</small>
+					</Toast.Header>
+					<Toast.Body>
+						Welcome Back {this.props.userName}!! good to see you Back Bro!!!
+					</Toast.Body>
+				</Toast>
 				<div className="images">
 					<img src={wall} alt="" />
 				</div>

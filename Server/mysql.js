@@ -81,7 +81,8 @@ const loginData = `select
 		loginData.loginStatus 
 from loginData  
 	inner join user where user.email like loginData.email`;
-const loginDetails = `select login_id,email from loginData where loginStatus like 'true'`;
+const loginDetails = `select login_id,user.email,user_name from loginData 
+inner join user where user.email like loginData.email`;
 
 io.on("connection", (socket) => {
 	// db connections
