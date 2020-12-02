@@ -1,4 +1,6 @@
-const port = process.env.PORT || 9050;
+require('dotenv').config()
+
+const port = process.env.PORT || 4000;
 
 let mysql = require("mysql");
 
@@ -87,10 +89,10 @@ inner join user where user.email like loginData.email`;
 io.on("connection", (socket) => {
 	// db connections
 	const musicConnection = mysql.createConnection({
-		host: "localhost",
-		user: "arb",
-		password: "Arb@1606",
-		database: "Oscillations",
+		host: process.env.HOST,
+		user: process.env.USER,
+		password: process.env.PASSWORD,
+		database: process.env.DATABASE,
 	});
 
 	const fetchData = () => {
