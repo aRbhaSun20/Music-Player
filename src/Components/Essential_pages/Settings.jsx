@@ -11,8 +11,11 @@ class Settings extends Component {
 	state = {
 		show: false,
 		popShow: false,
+		prefer: false,
 	};
 
+	handlePreferClose = () => this.setState({ prefer: false });
+	handlePreferShow = () => this.setState({ prefer: true });
 	handleClose = () => this.setState({ show: false });
 	handleShow = () => this.setState({ show: true });
 
@@ -24,18 +27,18 @@ class Settings extends Component {
 	};
 
 	handlePopClose = (evnt) => {
-		this.setState({ show: false });
+		this.setState({ popShow: false });
 	};
 
 	handleToggle = (evnt) => {
-		evnt.preventDefault();
-		this.setState({ show: true });
+		// evnt.preventDefault();
+		this.setState({ popShow: true });
 	};
 
 	handleLogOut = (evnt) => {
-		evnt.preventDefault();
+		// evnt.preventDefault();
 		this.props.handleLogout();
-		this.handleToggle;
+		this.handleToggle();
 	};
 	render() {
 		return (
@@ -48,12 +51,10 @@ class Settings extends Component {
 					autohide
 				>
 					<Toast.Header>
-						<strong className="mr-auto">LogIN Status</strong>
+						<strong className="mr-auto">LogOut Status</strong>
 						<small>User with Email {this.props.userEmail} has Logged Out</small>
 					</Toast.Header>
-					<Toast.Body>
-						See you Soon {this.props.userName}!! Bro!!!
-					</Toast.Body>
+					<Toast.Body>See you Soon {this.props.userName}!! Bro!!!</Toast.Body>
 				</Toast>
 				<div className="first-sections">
 					<div className="first-section">
@@ -74,7 +75,7 @@ class Settings extends Component {
 						<div
 							className="texts"
 							style={{ cursor: "pointer" }}
-							onClick={this.handleShow}
+							onClick={this.handlePreferShow}
 						>
 							Improve Your Recommendations
 						</div>
@@ -104,7 +105,12 @@ class Settings extends Component {
 					</div>
 					<div className="second-section-below">
 						<div className="heading">ABOUT MUSIC</div>
-						<div className="texts">Privacy Policy</div>
+						<Link to="/privacy">
+							<div className="texts">Privacy Policy</div>
+						</Link>
+						<Link to="/userdetails">
+							<div className="texts">User Details</div>
+						</Link>
 						<div className="texts">Technologies Used</div>
 						<div className="texts">Team Members Responsible</div>
 					</div>
@@ -122,16 +128,16 @@ class Settings extends Component {
 									<span className="on">Light Mode</span>
 									<span className="off">Dark Mode</span>
 								</div>
-								<div className="logoutBut" onClick={this.handleLogOut}>
-									LogOut Now
-								</div>
 							</label>
+							<div className="logoutBut" onClick={this.handleLogOut}>
+								LogOut Now
+							</div>
 						</div>
 					</div>
 				</div>
 				<Modal
-					show={this.state.show}
-					onHide={this.handleClose}
+					show={this.state.prefer}
+					onHide={this.handlePreferClose}
 					keyboard={false}
 					style={{ background: "transparent" }}
 				>

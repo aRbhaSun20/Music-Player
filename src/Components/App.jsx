@@ -15,6 +15,8 @@ import Contact from "./Essential_pages/Contact";
 import LogIn from "./Essential_pages/LogIn";
 import SigUp from "./Essential_pages/SignUp";
 import privacyPolicy from "./Essential_pages/privacyPolicy";
+import Userdetails from "./Essential_pages/Userdetails";
+import RecentList from "./Essential_pages/Recentlist";
 
 import "./Styles/index.css";
 let socket;
@@ -23,11 +25,13 @@ class App extends Component {
 		super(props);
 		this.state = {
 			response: false,
-			endpoint: "localhost:9050",
+			endpoint: "localhost:4000",
 			musicData: [],
 			musicLength: 0,
 			browsemusicData: [],
-			browseLength: 0,
+			recentmusicData: [],
+			recentLength: 0,
+			userData: [],
 			nowPlaying: false,
 			theme: true,
 			userId: null,
@@ -50,7 +54,10 @@ class App extends Component {
 		socket.on("BrowseMusicData", (data) => {
 			console.log("browse data received");
 			this.setState({ browsemusicData: data });
-			this.setState({ browseLength: data.length });
+		});
+		socket.on("RecentMusicData", (data) => {
+			console.log("recent data received");
+			this.setState({ recentmusicData: data });
 		});
 		socket.on("currentUser", (data) => {
 			console.log("current User data received");
@@ -58,6 +65,10 @@ class App extends Component {
 			this.setState({ userId: data[0].login_id });
 			this.setState({ userEmail: data[0].email });
 			this.setState({ userEmail: data[0].user_name });
+		});
+		socket.on("UserData", (data) => {
+			console.log("user data received");
+			this.setState({ userData: data });
 		});
 	}
 
@@ -72,13 +83,13 @@ class App extends Component {
 	currentSong = (index) => {
 		let len = this.state.musicLength;
 		if (index <= len) {
-			socket.emit("browseRead", this.state.musicData[index]);
+			socket.emit("recentRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[index].song_name,
 				this.state.musicData[index].artist_name,
 			];
 		} else {
-			socket.emit("browseRead", this.state.musicData[index]);
+			socket.emit("recentRead", this.state.musicData[index]);
 			return [
 				this.state.musicData[len - 1].song_name,
 				this.state.musicData[len - 1].artist_name,
@@ -90,10 +101,18 @@ class App extends Component {
 		socket.emit("deleteData", data);
 	};
 
-	loginUserData = (data) => socket.emit("loginUser", data);
-	signUpUserData = (data) => socket.emit("signUpUser", data);
-	searchSongData = (data) => socket.emit("searchBrowse", data);
-	handleFeedback = (data) => socket.emit("feedbackData", data);
+	loginUserData = (data) => {
+		socket.emit("loginUser", data);
+	};
+	signUpUserData = (data) => {
+		socket.emit("signUpUser", data);
+	};
+	searchSongData = (data) => {
+		socket.emit("searchBrowse", data);
+	};
+	handleFeedback = (data) => {
+		socket.emit("feedbackData", data);
+	};
 	logOutUser = () => {
 		socket.emit("logoutUser", this.state.userId);
 		this.setState({ userEmail: this.initial });
@@ -144,6 +163,15 @@ class App extends Component {
 									)}
 								/>
 								<Route
+									path="/recent_playing"
+									render={() => (
+										<RecentList
+											deleteSongData={this.deleteSong}
+											musicalData={this.state.recentmusicData}
+										/>
+									)}
+								/>
+								<Route
 									path="/browse"
 									render={() => (
 										<Browse
@@ -173,6 +201,11 @@ class App extends Component {
 									path="/signup"
 									exact
 									render={() => <SigUp signUpUserData={this.signUpUserData} />}
+								/>
+								<Route
+									path="/userdetails"
+									exact
+									render={() => <Userdetails details={this.state.userData} />}
 								/>
 								<Route path="/privacy" component={privacyPolicy} />
 							</section>

@@ -101,6 +101,7 @@ section {
 
         .activeLink {
             color: rgb(8, 255, 8);
+            border-bottom: 1px solid white;
             font-size: 23px;
         }
 
@@ -207,6 +208,10 @@ div.main-light {
 
     }
 
+    .main-song-lists {
+        margin-bottom: 5em;
+    }
+
     .song {
         display: flex;
         width: 80em;
@@ -224,7 +229,8 @@ div.main-light {
 
         .song-details {
             background: #263238;
-            opacity: 0.9;
+            opacity: 0.8;
+            border-radius: 10px;
             height: 7vh;
             scale: 1.1;
             padding: 0 2em;
@@ -433,9 +439,11 @@ div.main-light {
 
     .main-song-lists {
         margin-top: 6em;
+        margin-bottom: 2em;
 
         .song-details {
             margin-left: 20%;
+            cursor: pointer;
             width: 75em;
             opacity: 0.9;
             padding-bottom: 12px;
@@ -444,6 +452,14 @@ div.main-light {
             display: flex;
             justify-content: space-around;
             align-items: center;
+        }
+
+        .close-icon {
+            scale: 1.5;
+            position: relative;
+            top: 3.1em;
+            left: 26em;
+            cursor: pointer;
         }
     }
 }
@@ -492,6 +508,81 @@ div.main-light {
                 z-index: 1;
             }
         }
+    }
+}
+
+.Recent-playing {
+
+    .current-song-playing {
+        .song-playing-album-now {
+            // opacity: 0;
+            transform: scale(2);
+            margin-left: 10em;
+            margin-top: 8em;
+        }
+    }
+
+    .main-song-lists {
+        position: relative;
+        margin: 10em 4em;
+        width: 95%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .recent {
+            margin: 1em;
+
+            .recent-song {
+                background: #2632386e;
+                width: 24em;
+                display: flex;
+                align-items: center;
+                height: 13em;
+                border-radius: 20px;
+
+                .song-detail {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-evenly;
+
+                    img.singer {
+
+                        border-radius: 10px;
+                        width: 10em;
+                    }
+
+                    .detail {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        // left: 6em;
+                        // top: -1em;
+                        color: rgb(192, 192, 192);
+                        font-size: 15px;
+
+                        .name {
+                            font-size: 26px;
+                            color: yellow;
+                        }
+                    }
+                }
+
+            }
+
+            .close-icon {
+                position: relative;
+                z-index: 1;
+                top: 7em;
+                left: -2em;
+                scale: 1.5;
+                cursor: pointer;
+            }
+        }
+
+
     }
 }
 
@@ -670,15 +761,24 @@ div.main-light {
 
     .logoutBut {
         position: absolute;
-        bottom: -4em;
+        bottom: -2em;
         background: transparent;
         color: #fd7272;
         opacity: 0.9;
         width: 8em;
+        cursor: pointer;
         text-align: center;
         height: 1.8em;
         border: 1px solid rgb(255, 0, 0);
         margin-top: 1em;
+    }
+
+    .popupMesage {
+        position: absolute;
+        top: -4em;
+        right: -13em;
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
     }
 
     .subtext {
@@ -853,6 +953,14 @@ div.main-light {
         background: linear-gradient(45deg, #1a163b, #0c0533, #0c0830);
         padding: 2em 3em;
 
+        .popupMesage {
+            position: absolute;
+            top: 9em;
+            left: 3.5em;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+
         .top-contact {
             margin-top: 4em;
             display: flex;
@@ -968,7 +1076,7 @@ div.main-light {
                     position: absolute;
                     top: 32em;
                     right: 0em;
-                    color:#ece8ff;
+                    color: #ece8ff;
                     letter-spacing: 5px;
                     font-size: 16px;
                     border-radius: 10px 0px 0px 10px;
@@ -1001,12 +1109,12 @@ div.main-light {
         margin-left: 10em;
     }
 
-    .popupMesage{
-      position: absolute;
-      top: -7em;
-      left: 3em;
-      background: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
+    .popupMesage {
+        position: absolute;
+        top: -7em;
+        left: 3em;
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
     }
 
     .loginItems {
@@ -1156,13 +1264,15 @@ div.main-light {
         // min-width: 100em;
         margin-left: 10em;
     }
-.popupMesage {
-    position: absolute;
-    top: -7em;
-    left: 3em;
-    background: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
+
+    .popupMesage {
+        position: absolute;
+        top: -7em;
+        left: 3em;
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+    }
+
     .loginItems {
         scale: 1.05;
         margin-top: 0.5em;
@@ -1448,4 +1558,94 @@ div.main-light {
 
     }
 
+}
+
+.User-details {
+    display: flex;
+    width: 100%;
+    margin-top: 7em;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+
+    .user-detail {
+        margin-top: 2em;
+        width: 28em;
+        display: flex;
+        flex-direction: column;
+        height: 32em;
+        padding: 1em;
+
+        color: #a8e6f9;
+
+        .top-bar {
+            padding: 2em;
+            display: flex;
+            height: 8em;
+            background: #263238;
+            color: #a8e6f9;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+
+            .camera {
+                position: relative;
+                width: 1.3em;
+                margin: 10px;
+                top: 2em;
+                left: -3.5em;
+                cursor: pointer;
+            }
+
+            .contact {
+                position: relative;
+                width: 10em;
+                scale: 1.8;
+                margin: 10px;
+                top: 0em;
+                left: -6.5em;
+                cursor: pointer;
+            }
+
+            .clip {
+                position: relative;
+                top: -3.5em;
+                left: 9.5em;
+            }
+
+            .top-bottom {
+                display: flex;
+                width: 100%;
+            }
+
+            .details {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                height: 4em;
+                justify-content: space-around;
+                top: 0.5em;
+                left: -4.5em;
+                font-size: 17px;
+            }
+        }
+
+        .bottom-bar {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 22em;
+            justify-content: space-around;
+            padding: 2em;
+            background-color: #37474f;
+            color: #a8e6f9;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            .sub-heading {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    }
 }

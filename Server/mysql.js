@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 const port = process.env.PORT || 4000;
 
@@ -45,7 +45,7 @@ const recent = `select
         song_name,
         recentData.playlist_id,
         playlist_name,
-        recentData.artist_id,
+        recentData.artist_id as artist_id,
         artist_name,
         recentData.album_id,
         album_name,
@@ -62,8 +62,9 @@ const userfetch = `select
 		membershipStatus,
 		email,
 		loginStatus,
-		createTime,
-		verifyEmailStatus
+		lastlogin,
+		numlikes,
+		numdislikes,numfavourites
 from user`;
 const feedbackfetch = `select 
 feedback_id,
@@ -123,20 +124,6 @@ io.on("connection", (socket) => {
 			if (err) throw err;
 
 			socket.emit("UserData", res);
-		});
-
-		// fetch the feeedback data
-		musicConnection.query(feedbackfetch, (err, res) => {
-			if (err) throw err;
-
-			socket.emit("FeedBackData", res);
-		});
-
-		// fetch the login data
-		musicConnection.query(loginData, (err, res) => {
-			if (err) throw err;
-
-			socket.emit("loginData", res);
 		});
 	};
 
@@ -238,7 +225,7 @@ io.on("connection", (socket) => {
                             INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
                         where 
                             song_name like '%${data}%' or
-                            artist like '%${data}%' or
+                            artist_name like '%${data}%' or
                             album_name like '%${data}%' or
                             playlist_name like '%${data}%' `;
 
@@ -260,7 +247,7 @@ io.on("connection", (socket) => {
                             INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
                         where 
                             song_name like '${data}' or
-                            artist like '${data}' or
+                            artist_name like '${data}' or
                             album_name like '${data}' or
                             playlist_name like '${data}' `;
 

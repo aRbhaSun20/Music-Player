@@ -33,14 +33,14 @@ class LogIn extends Component {
 	};
 
 	handleToggle = (evnt) => {
-		evnt.preventDefault();
+		// evnt.preventDefault();
 		this.setState({ show: true });
 	};
 
 	HandleSubmit = (event) => {
 		event.preventDefault();
 		this.props.loginUserData(this.state);
-		this.handleToggle;
+		this.handleToggle();
 	};
 
 	render() {

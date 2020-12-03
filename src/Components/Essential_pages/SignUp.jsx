@@ -39,14 +39,14 @@ class SignUp extends Component {
 	};
 
 	handleToggle = (evnt) => {
-		evnt.preventDefault();
+		// evnt.preventDefault();
 		this.setState({ show: true });
 	};
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.signUpUserData(this.state);
-		this.handleToggle
+		this.handleToggle();
 	};
 	render() {
 		return (

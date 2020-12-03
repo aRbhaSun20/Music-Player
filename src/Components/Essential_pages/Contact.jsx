@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "../Styles/index.css";
 
+import Toast from "react-bootstrap/Toast";
+
 import pinPoint from "../Images/Icons/pinpoint.svg";
 import mapImg from "../Images/Icons/map.png";
 import uploadCloud from "../Images/Icons/upload.svg";
@@ -9,21 +11,43 @@ import SearchGoogle from "../Images/Icons/search-google.svg";
 
 class Contact extends Component {
 	state = {
+		popShow: false,
 		inputs: ["Name", "Email", "Phone", "Message"],
 	};
 	initialState = ["", "", "", ""];
 	handleChange = (evnt) => {
 		evnt.preventDefault();
-		this.initialState[evnt.target.name] = evnt.target.value;
+		this.initialState[Number(evnt.target.name)] = evnt.target.value;
 	};
 	handleSubmit = (evnt) => {
-		evnt.preventDefault()
-		console.log(this.state.data)
-	}	
+		evnt.preventDefault();
+		this.props.handleFeedback(this.initialState);
+		this.setState({ popShow: true });
+	};
+
+	handlePopClose = (evnt) => {
+		this.setState({ popShow: false });
+	};
 	render() {
 		return (
 			<div className="Contactc-Page">
 				<div className="main">
+					<Toast
+						className="popupMesage"
+						onClose={this.handlePopClose}
+						show={this.state.popShow}
+						delay={3000}
+						autohide
+					>
+						<Toast.Header>
+							<strong className="mr-auto">FeedBack Status</strong>
+						</Toast.Header>
+						<Toast.Body>
+							Thanks {this.initialState[0]} for kind feedback the developers
+							will be notified
+						</Toast.Body>
+					</Toast>
+
 					<div className="top-contact">
 						<div className="map">
 							<img
@@ -60,7 +84,9 @@ class Contact extends Component {
 									<img src={uploadCloud} alt="Upload" />
 									Upload file
 								</div>
-								<button onClick={this.handleSubmit} className="feedBackSubmit">Submit </button>
+								<button onClick={this.handleSubmit} className="feedBackSubmit">
+									Submit{" "}
+								</button>
 							</div>
 						</div>
 					</div>

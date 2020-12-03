@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="50" viewBox="0 0 34 50">
+  <g id="Group_8244" data-name="Group 8244" transform="translate(-276.269 -138.052)">
+    <path id="Rectangle_619" data-name="Rectangle 619" d="M0,0H34a0,0,0,0,1,0,0V23A10,10,0,0,1,24,33H10A10,10,0,0,1,0,23V0A0,0,0,0,1,0,0Z" transform="translate(276.269 155.052)" fill="#a8e6f9"/>
+    <path id="Subtraction_10" data-name="Subtraction 10" d="M33.989,17H.011C0,16.784,0,16.58,0,16.394A16,16,0,0,1,4.979,4.8,17.213,17.213,0,0,1,17,0,17.213,17.213,0,0,1,29.02,4.8,16,16,0,0,1,34,16.394c0,.2,0,.4-.011.6Z" transform="translate(276.269 138.052)" fill="#455a64"/>
+    <circle id="Ellipse_51" data-name="Ellipse 51" cx="9" cy="9" r="9" transform="translate(284.269 163.052)" fill="#00721b"/>
+  </g>
+</svg>
