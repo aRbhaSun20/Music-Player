@@ -57,12 +57,8 @@ io.on("connection", (socket) => {
 	};
 
 	const browseInsert = (data) => {
-		let browseData = `insert into browseData (song_name,artist_id,album_id,playlist_id,duration) values (
-            "${data.song_name}",
-            "${data.artist_id}",
-            "${data.album_id}",
-            "${data.playlist_id}",
-            "${data.duration}")`;
+		let browseData = `insert into browseData (song_name) values (
+            "${data.song_name}")`;
 		musicConnection.query(browseData, (err, res) => {
 			if (err) throw err;
 
@@ -79,12 +75,8 @@ io.on("connection", (socket) => {
 
 	// insert to recent data
 	socket.on("recentRead", (data) => {
-		let insertRecent = `insert into recentData (song_name,artist_id,album_id,playlist_id,duration) values (
-            "${data.song_name}",
-            "${data.artist_id}",
-            "${data.album_id}",
-            "${data.playlist_id}",
-            "${data.duration}")`;
+		let insertRecent = `insert into recentData (song_name) values (
+            "${data.song_name}")`;
 		musicConnection.query(insertRecent, (err, res) => {
 			if (err) throw err;
 
