@@ -37,9 +37,9 @@ CREATE TABLE recentData(
   PRIMARY KEY(recent_id)
 );
 CREATE TABLE browseData(
-browse_id INT AUTO_INCREMENT,
-song_name VARCHAR(100) NOT NULL,
-PRIMARY KEY(browse_id)
+  browse_id INT AUTO_INCREMENT,
+  song_name VARCHAR(100) NOT NULL,
+  PRIMARY KEY(browse_id)
 );
 CREATE TABLE user(
   user_id INT AUTO_INCREMENT,
@@ -92,8 +92,6 @@ FROM
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
-
-
 CREATE VIEW browseViewData AS
 SELECT
   songData.song_id,
@@ -115,8 +113,6 @@ FROM
   INNER JOIN browseData on songData.song_name = browseData.song_name
 WHERE
   songData.song_name = browseData.song_name;
-
-
 CREATE VIEW recentViewData AS
 SELECT
   songData.song_id,
@@ -136,10 +132,8 @@ FROM
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
   INNER JOIN recentData on songData.song_name = recentData.song_name
-WHERE 
+WHERE
   songData.song_name = recentData.song_name;
-
-
 CREATE VIEW userViewData AS
 SELECT
   user_id,
@@ -171,6 +165,8 @@ FROM
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
+
+
 CREATE trigger toggleLoginStatus
 after
 insert
@@ -180,7 +176,10 @@ UPDATE
 SET
   user.loginStatus = new.loginStatus
 WHERE
-  user.user_id = new.login_id;
+  user.email = new.email AND 
+  user.password = new.password;
+
+
 CREATE trigger changeLoginStatus
 after
 UPDATE
@@ -190,4 +189,5 @@ UPDATE
 SET
   user.loginStatus = new.loginStatus
 WHERE
-  user.user_id = new.login_id;
+  user.email = new.email AND 
+  user.password = new.password;
