@@ -32,34 +32,14 @@ CREATE TABLE songData(
   FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
 );
 CREATE TABLE recentData(
-  song_id INT AUTO_INCREMENT,
+  recent_id INT AUTO_INCREMENT,
   song_name VARCHAR(100) NOT NULL,
-  song_path VARCHAR(50) DEFAULT 'unknown',
-  artist_id INT(50) NOT NULL,
-  album_id INT(50) NOT NULL,
-  playlist_id INT(50),
-  duration VARCHAR(10) NOT NULL,
-  likes INT(50) DEFAULT 0,
-  dislikes INT(50) DEFAULT 0,
-  PRIMARY KEY(song_id),
-  FOREIGN KEY(artist_id) REFERENCES artistData(artist_id),
-  FOREIGN KEY(album_id) REFERENCES albumData(album_id),
-  FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
+  PRIMARY KEY(recent_id)
 );
 CREATE TABLE browseData(
-  song_id INT AUTO_INCREMENT,
-  song_name VARCHAR(100) NOT NULL,
-  song_path VARCHAR(50) DEFAULT 'unknown',
-  artist_id INT(50) NOT NULL,
-  album_id INT(50) NOT NULL,
-  playlist_id INT(50),
-  duration VARCHAR(10) NOT NULL,
-  likes INT(50) DEFAULT 0,
-  dislikes INT(50) DEFAULT 0,
-  PRIMARY KEY(song_id),
-  FOREIGN KEY(artist_id) REFERENCES artistData(artist_id),
-  FOREIGN KEY(album_id) REFERENCES albumData(album_id),
-  FOREIGN KEY(playlist_id) REFERENCES playlistData(playlist_id)
+browse_id INT AUTO_INCREMENT,
+song_name VARCHAR(100) NOT NULL,
+PRIMARY KEY(browse_id)
 );
 CREATE TABLE user(
   user_id INT AUTO_INCREMENT,
@@ -112,42 +92,54 @@ FROM
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
+
+
 CREATE VIEW browseViewData AS
 SELECT
-  song_id,
-  song_name,
-  browseData.playlist_id,
+  songData.song_id,
+  songData.song_name,
+  songData.playlist_id,
   playlist_name,
-  browseData.artist_id,
+  songData.artist_id AS artist_id,
   artist_name,
-  browseData.album_id,
+  songData.album_id,
   album_name,
   duration,
   likes,
   dislikes
 FROM
-  browseData
-  INNER JOIN artistData ON browseData.artist_id = artistData.artist_id
-  INNER JOIN albumData ON browseData.album_id = albumData.album_id
-  INNER JOIN playlistData ON browseData.playlist_id = playlistData.playlist_id;
+  songData
+  INNER JOIN artistData ON songData.artist_id = artistData.artist_id
+  INNER JOIN albumData ON songData.album_id = albumData.album_id
+  INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
+  INNER JOIN browseData on songData.song_name = browseData.song_name
+WHERE
+  songData.song_name = browseData.song_name;
+
+
 CREATE VIEW recentViewData AS
 SELECT
-  song_id,
-  song_name,
-  recentData.playlist_id,
+  songData.song_id,
+  songData.song_name,
+  songData.playlist_id,
   playlist_name,
-  recentData.artist_id AS artist_id,
+  songData.artist_id AS artist_id,
   artist_name,
-  recentData.album_id,
+  songData.album_id,
   album_name,
   duration,
   likes,
   dislikes
 FROM
-  recentData
-  INNER JOIN artistData ON recentData.artist_id = artistData.artist_id
-  INNER JOIN albumData ON recentData.album_id = albumData.album_id
-  INNER JOIN playlistData ON recentData.playlist_id = playlistData.playlist_id;
+  songData
+  INNER JOIN artistData ON songData.artist_id = artistData.artist_id
+  INNER JOIN albumData ON songData.album_id = albumData.album_id
+  INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
+  INNER JOIN recentData on songData.song_name = recentData.song_name
+WHERE 
+  songData.song_name = recentData.song_name;
+
+
 CREATE VIEW userViewData AS
 SELECT
   user_id,
