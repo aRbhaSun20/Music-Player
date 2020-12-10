@@ -8,84 +8,13 @@ const io = require("socket.io").listen(port, () =>
 	console.log(`Listening on port ${port}`)
 ).sockets;
 
-const song = `select
-    song_id,
-    song_name,
-    songData.playlist_id,
-    playlist_name,
-    songData.artist_id,
-    artist_name,
-    songData.album_id,
-    album_name,
-    duration,
-    likes,
-    dislikes
-from songData
-    INNER JOIN artistData ON songData.artist_id = artistData.artist_id
-    INNER JOIN albumData ON songData.album_id = albumData.album_id
-    INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id`;
-const browse = `select
-        song_id,
-        song_name,
-        browseData.playlist_id,
-        playlist_name,
-        browseData.artist_id,
-        artist_name,
-        browseData.album_id,
-        album_name,
-        duration,
-        likes,
-        dislikes
-from browseData
-    INNER JOIN artistData ON browseData.artist_id = artistData.artist_id
-    INNER JOIN albumData ON browseData.album_id = albumData.album_id
-    INNER JOIN playlistData ON browseData.playlist_id = playlistData.playlist_id `;
-const recent = `select
-        song_id,
-        song_name,
-        recentData.playlist_id,
-        playlist_name,
-        recentData.artist_id as artist_id,
-        artist_name,
-        recentData.album_id,
-        album_name,
-        duration,
-        likes,
-        dislikes
-from recentData
-    INNER JOIN artistData ON recentData.artist_id = artistData.artist_id
-    INNER JOIN albumData ON recentData.album_id = albumData.album_id
-    INNER JOIN playlistData ON recentData.playlist_id = playlistData.playlist_id `;
-const userfetch = `select 
-		user_id,
-		user_name,
-		membershipStatus,
-		email,
-		loginStatus,
-		lastlogin,
-		numlikes,
-		numdislikes,numfavourites
-from user`;
-const feedbackfetch = `select 
-feedback_id,
-name,
-email,
-phone,
-message,
-creationTime,
-mailStatus from feedbackForm`;
-const loginData = `select 
-		user_name,
-		membershipStatus,
-		user.email,
-		createTime,
-		loginTime,
-		verifyEmailStatus,
-		loginData.loginStatus 
-from loginData  
-	inner join user where user.email like loginData.email`;
-const loginDetails = `select login_id,user.email,user_name from loginData 
-inner join user where user.email like loginData.email`;
+const song = `select * from songViewData`;
+const browse = `select * from browseViewData`;
+const recent = `select * from recentViewData`;
+const userfetch = `select * from userViewData`;
+const feedbackfetch = `select * from feedbackForm`;
+
+const loginDetails = `select * from loginViewData`;
 
 io.on("connection", (socket) => {
 	// db connections
@@ -207,44 +136,14 @@ io.on("connection", (socket) => {
 
 	// search the browse data
 	socket.on("searchBrowse", (data) => {
-		let searchData = `select
-                            song_id,
-                            song_name,
-                            songData.playlist_id,
-                            playlist_name,
-                            songData.artist_id,
-                            artist_name,
-                            songData.album_id,
-                            album_name,
-                            duration,
-                            likes,
-                            dislikes
-                        from songData
-                            INNER JOIN artistData ON songData.artist_id = artistData.artist_id
-                            INNER JOIN albumData ON songData.album_id = albumData.album_id
-                            INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
+		let searchData = `select * from browseSearchView
                         where 
                             song_name like '%${data}%' or
                             artist_name like '%${data}%' or
                             album_name like '%${data}%' or
                             playlist_name like '%${data}%' `;
 
-		let inserData = `select
-                            song_id,
-                            song_name,
-                            songData.playlist_id,
-                            playlist_name,
-                            songData.artist_id,
-                            artist_name,
-                            songData.album_id,
-                            album_name,
-                            duration,
-                            likes,
-                            dislikes
-                        from songData
-                            INNER JOIN artistData ON songData.artist_id = artistData.artist_id
-                            INNER JOIN albumData ON songData.album_id = albumData.album_id
-                            INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id
+		let inserData = `select * from browseSearchView
                         where 
                             song_name like '${data}' or
                             artist_name like '${data}' or
