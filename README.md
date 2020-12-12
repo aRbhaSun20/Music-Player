@@ -59,18 +59,14 @@ Zoomable visualization with data that describes sequences of events.Click a node
    
  ![Now playing page](Designs/Now%20playing.png)
  
-3. Recently Played Music Page Component
- 
- ![Recent playing page](Designs/recently%20Played.png)
-
-4. Contact and feedback Form Page Component
+3. Contact and feedback Form Page Component
  
  ![Contact and feedback Form Page Component](Designs/contact.png)
 
-5. Log In Existing User Page Component
+4. Log In Existing User Page Component
 
  ![Log In Existing User Page Component](Designs/login.png)
 
-6. User Details and login Page Component
+5. User Details and login Page Component
 
 ![User Details and login Page Component](Designs/user%20details%20with%20login.png)
