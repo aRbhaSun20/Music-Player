@@ -4,21 +4,31 @@ import "../Styles/index.css";
 
 class Visualizer extends Component {
 	state = {
-		visualize: ["Music Data", "recentmusicData", "browsemusicData", "userData"],
+		visualize: [
+			"Music Data",
+			"Recent Music Data",
+			"Browse Music Data",
+			"userData",
+		],
 	};
 
 	render() {
 		return (
 			<div className="visualizers">
-				{this.props.details.map((detail, index) => {
-					return (
-						<div className="indi-visualize" key={index}>
-							<div className="heading-visualize">
-								<h1>{`${this.state.visualize[index]} Visualization`}</h1>
-								<Sunburst data={detail} />
+				{
+					// eslint-disable-next-line
+					this.props.details.map((detail, index) => {
+					if (detail.length !== 0) {
+						return (
+							<div className="indi-visualize" key={index}>
+								<div className="heading-visualize">
+									<h1>{`${this.state.visualize[index]} Visualization`}</h1>
+
+									<Sunburst data={detail} />
+								</div>
 							</div>
-						</div>
-					);
+						);
+					}
 				})}
 			</div>
 		);

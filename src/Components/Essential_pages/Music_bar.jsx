@@ -30,29 +30,22 @@ class MusicBar extends Component {
 			fullscreen_icon,
 		],
 		IconslistAlt: [
-			"favourite_icon",
-			"thumbs_up_icon",
-			"thumbs_down_icon",
+			"favourite",
+			"likes",
+			"dislikes",
 			"repeat_icon",
 			"library_icon",
 			"fullscreen_icon",
 		],
 	};
-
-	async getAudio() {
-		let response = await fetch("../Songs/demo2.mp3");
-		let url = await response.url;
-		this.setState({ current_song: url });
-		this.player.src = url;
-		document.getElementById("music").src = url;
-		console.log(url);
-	}
-
 	InitialState = {
 		currentIndex: 0,
 	};
 
-	playNext = () => {
+	playNext = (evnt) => {
+		evnt.preventDefault();
+		evnt.persist();
+		evnt.target.style.scale = 1.6;
 		this.player.src = demo1;
 		if (this.InitialState.currentIndex < this.props.listLength) {
 			this.setState({
@@ -63,9 +56,19 @@ class MusicBar extends Component {
 			});
 			this.InitialState.currentIndex += 1;
 		}
+		setTimeout(() => {
+			if (this.props.changenow) {
+				evnt.target.style.scale = 1.3;
+			} else {
+				evnt.target.style.scale = 1.1;
+			}
+		}, 400);
 	};
 
-	playPrevious = () => {
+	playPrevious = (evnt) => {
+		evnt.preventDefault();
+		evnt.persist();
+		evnt.target.style.scale = 1.6;
 		if (this.InitialState.currentIndex > 0) {
 			this.setState({
 				current_playing: this.props.currentMusic(
@@ -77,6 +80,34 @@ class MusicBar extends Component {
 		} else {
 			this.InitialState.currentIndex = 0;
 		}
+		setTimeout(() => {
+			if (this.props.changenow) {
+				evnt.target.style.scale = 1.3;
+			} else {
+				evnt.target.style.scale = 1.1;
+			}
+		}, 400);
+	};
+
+	handleClick = (evnt) => {
+		evnt.preventDefault();
+		evnt.persist();
+		evnt.target.style.scale = 1.6;
+		if (
+			evnt.target.id === "favourite" ||
+			evnt.target.id === "likes" ||
+			evnt.target.id === "dislikes"
+		) {
+			this.props.changeDetails([evnt.target.id, this.state.index]);
+		}
+
+		setTimeout(() => {
+			if (this.props.changenow) {
+				evnt.target.style.scale = 1.3;
+			} else {
+				evnt.target.style.scale = 1.1;
+			}
+		}, 400);
 	};
 
 	render() {
@@ -129,12 +160,15 @@ class MusicBar extends Component {
 						</div>
 					</div>
 					<div className="bottom-icons">
-						{this.state.Iconslist.map((i, index) => {
+						{this.state.Iconslist.map((img, index) => {
 							return (
 								<div key={index}>
 									<img
+										ref={(ref) => (this.icon = ref)}
+										id={this.state.IconslistAlt[index]}
 										className="bottom-bar-icons"
-										src={this.state.Iconslist[index]}
+										src={img}
+										onClick={this.handleClick}
 										alt={this.state.IconslistAlt[index]}
 									/>
 								</div>

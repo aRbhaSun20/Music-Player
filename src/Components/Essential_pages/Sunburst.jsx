@@ -62,7 +62,7 @@ class Sunburst extends Component {
 		let nodeData = {
 			name: "song-list",
 			children: [],
-		};
+		}; // eslint-disable-next-line
 		this.props.data.map((data) => {
 			let child = {
 				name: data.song_name,
@@ -85,13 +85,13 @@ class Sunburst extends Component {
 			});
 
 			child.children.push({
-				name: `fav : ${data.favourites}`,
+				name: `favourites : ${data.favourites}`,
 				size: data.favourites,
 			});
 			nodeData.children.push(child);
 		});
 		this.setState({ nodeData: nodeData });
-	};
+	};;
 
 	drawGraph = () => {
 		const width = this.state.width,

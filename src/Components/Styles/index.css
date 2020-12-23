@@ -323,6 +323,8 @@ div.main-light {
   display: flex;
   min-width: 25em;
   scale: 1.1;
+  -webkit-transition: scale 1s ease-in-out;
+  transition: scale 1s ease-in-out;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
