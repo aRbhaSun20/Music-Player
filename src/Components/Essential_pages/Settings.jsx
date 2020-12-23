@@ -112,7 +112,9 @@ class Settings extends Component {
 							<div className="texts">User Details</div>
 						</Link>
 						<div className="texts">Technologies Used</div>
-						<div className="texts">Team Members Responsible</div>
+						<Link to="/visualize">
+							<div className="texts">Data Visualization</div>
+						</Link>
 					</div>
 					<div className="third-section-below">
 						<div className="heading">SELECT THEME MODE</div>

@@ -17,6 +17,7 @@ import SigUp from "./Essential_pages/SignUp";
 import privacyPolicy from "./Essential_pages/privacyPolicy";
 import Userdetails from "./Essential_pages/Userdetails";
 import RecentList from "./Essential_pages/Recentlist";
+import Visualizer from "./Essential_pages/Visualizer";
 
 import "./Styles/index.css";
 let socket;
@@ -208,6 +209,21 @@ class App extends Component {
 									render={() => <Userdetails details={this.state.userData} />}
 								/>
 								<Route path="/privacy" component={privacyPolicy} />
+
+								<Route
+									path="/visualize"
+									exact
+									render={() => (
+										<Visualizer
+											details={[
+												this.state.musicData,
+												this.state.recentmusicData,
+												this.state.browsemusicData,
+												this.state.userData,
+											]}
+										/>
+									)}
+								/>
 							</section>
 							<MusicBar
 								changenow={this.state.nowPlaying}
