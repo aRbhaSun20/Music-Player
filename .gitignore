@@ -1,0 +1,9 @@
+node_modules
+notes
+public
+Server/node_modules
+src/Components/Songs
+src/Components/Styles/index.css.map
+src/Components/Images/Artist
+Server/.env
+Server/insert.sql

@@ -165,8 +165,20 @@ FROM
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
-
-
+create view loginViewData as
+select
+  user_name,
+  membershipStatus,
+  user.email,
+  createTime,
+  loginTime,
+  verifyEmailStatus,
+  loginData.loginStatus
+from
+  loginData
+  inner join user
+where
+  user.email like loginData.email;
 CREATE trigger toggleLoginStatus
 after
 insert
@@ -176,10 +188,8 @@ UPDATE
 SET
   user.loginStatus = new.loginStatus
 WHERE
-  user.email = new.email AND 
-  user.password = new.password;
-
-
+  user.email = new.email
+  AND user.password = new.password;
 CREATE trigger changeLoginStatus
 after
 UPDATE
@@ -189,5 +199,5 @@ UPDATE
 SET
   user.loginStatus = new.loginStatus
 WHERE
-  user.email = new.email AND 
-  user.password = new.password;
+  user.email = new.email
+  AND user.password = new.password;
