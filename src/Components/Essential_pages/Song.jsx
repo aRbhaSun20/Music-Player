@@ -6,6 +6,7 @@ import "../Styles/index.css";
 import close_icon from "../Images/Icons/close.svg";
 
 class Song extends Component {
+
 	clickedMe = (id) => {
 		let data = [id, this.props.identify];
 		this.props.deleteSong(data);
@@ -18,7 +19,7 @@ class Song extends Component {
 			>
 				<div className="trigger-close">
 					<img
-						onClick={() => this.clickedMe(this.props.Songdata.song_id)}
+						onClick={() => this.clickedMe(this.props.Songdata.song_name)}
 						className="close-icon"
 						src={close_icon}
 						alt="close"

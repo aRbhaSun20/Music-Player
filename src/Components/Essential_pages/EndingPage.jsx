@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "../Styles/index.css";
 
 import facebook from "../Images/Icons/facebook_ending.svg";
@@ -15,7 +17,7 @@ class EndingPage extends Component {
 	};
 	render() {
 		return (
-			<div className="ending-section">
+			<div className="ending-section fixed-bottom">
 				<div className="info">
 					<Link to="/contact">
 						<div className="details">

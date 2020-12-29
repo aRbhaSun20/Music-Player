@@ -19,31 +19,29 @@ class NowPlaying extends Component {
 	render() {
 		return (
 			<div className="Now-playing">
-				<div className="page-section">
-					<div className="current-song-playing">
-						<div className="album-song-now">
-							<img
-								className="song-playing-album-now"
-								src={song_playing}
-								alt="album-now"
-							/>
-						</div>
+				<div className="current-song-playing">
+					<div className="album-song-now">
+						<img
+							className="song-playing-album-now"
+							src={song_playing}
+							alt="album-now"
+						/>
 					</div>
-					<div className="main-song-lists">
-						<div className="song-list">
-							{this.props.musicalData.map((Songdata, index) => {
-								return (
-									<div key={index}>
-										<Song
-											deleteSong={this.deleteSong}
-											Songdata={Songdata}
-											index={index}
-											identify="now"
-										/>
-									</div>
-								);
-							})}
-						</div>
+				</div>
+				<div className="main-song-lists">
+					<div className="song-list">
+						{this.props.musicalData.map((Songdata, index) => {
+							return (
+								<div key={index}>
+									<Song
+										deleteSong={this.deleteSong}
+										Songdata={Songdata}
+										index={index}
+										identify="now"
+									/>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</div>

@@ -228,7 +228,7 @@ div.main-light {
         }
 
         .song-details {
-            background: #263238;
+            background: #263238a2;
             opacity: 0.8;
             border-radius: 10px;
             height: 7vh;
@@ -268,6 +268,7 @@ div.main-light {
             display: flex;
             min-width: 25em;
             scale: 1.1;
+            cursor: pointer;
             transition: scale 1s ease-in-out;
             align-items: center;
             justify-content: space-evenly;
@@ -295,6 +296,7 @@ div.main-light {
         .songunmodified audio {
             margin-top: 10px;
             width: 30em;
+            cursor: pointer;
             background: transparent;
         }
 
@@ -466,6 +468,9 @@ div.main-light {
 }
 
 .Now-playing {
+    width: 100%;
+    min-height: 147vh;
+
     .current-song-playing {
         .song-playing-album-now {
             transform: scale(2);
@@ -490,7 +495,6 @@ div.main-light {
             align-content: center;
 
             .song-details {
-                opacity: 0.9;
                 scale: 1.1;
                 width: 85em;
                 height: 7vh;
@@ -502,17 +506,24 @@ div.main-light {
                 justify-content: space-around;
                 align-items: center;
                 margin-left: 10%;
-                background: rgba(255, 255, 255, 0.034);
+                background: #2632389f;
+                opacity: 0.9;
             }
 
             .close-icon {
                 z-index: 1;
+                position: relative;
+                top: 1.2em;
+                left: 1em;
+                scale: 1.5;
             }
         }
     }
 }
 
 .Recent-playing {
+    width: 100%;
+    min-height: 147vh;
 
     .current-song-playing {
         .song-playing-album-now {
@@ -1268,7 +1279,7 @@ div.main-light {
 
     .popupMesage {
         position: absolute;
-        top: -7em;
+        top: -13em;
         left: 3em;
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
@@ -1509,8 +1520,6 @@ div.main-light {
 .Album-Image-Section {
     margin: 2em auto;
     width: 90%;
-    // transform: scale(1);
-    // display: flex;
     justify-content: space-around;
     align-items: center;
 
@@ -1520,17 +1529,6 @@ div.main-light {
     }
 
     .album-section {
-
-        //     .motion-album {
-        //         margin: auto;
-        //         display: flex;
-        //         border-radius: 20px;
-        //         opacity: 1;
-        //         transition: opacity 2s ease-in;
-        //         object-fit: fit;
-        //         width: 30em;
-        //         height: 25em;
-        //     }
         .glide_slides {
             display: flex;
         }
@@ -1625,7 +1623,7 @@ div.main-light {
                 height: 4em;
                 justify-content: space-around;
                 top: 0.5em;
-                left: -4.5em;
+                left: -1em;
                 font-size: 17px;
             }
         }
@@ -1647,6 +1645,12 @@ div.main-light {
                 width: 100%;
                 justify-content: space-between;
             }
+
+            .column-value{
+                 color: #f8b548;
+                 margin-left: 1em;
+            }
+
         }
     }
 }

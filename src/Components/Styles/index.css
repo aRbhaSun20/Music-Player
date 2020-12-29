@@ -264,7 +264,7 @@ div.main-light {
 }
 
 .home-page .song .song-details {
-  background: #263238;
+  background: #263238a2;
   opacity: 0.8;
   border-radius: 10px;
   height: 7vh;
@@ -323,6 +323,7 @@ div.main-light {
   display: flex;
   min-width: 25em;
   scale: 1.1;
+  cursor: pointer;
   -webkit-transition: scale 1s ease-in-out;
   transition: scale 1s ease-in-out;
   -webkit-box-align: center;
@@ -366,6 +367,7 @@ div.main-light {
 .music-bar .bottom-bar .songunmodified audio {
   margin-top: 10px;
   width: 30em;
+  cursor: pointer;
   background: transparent;
 }
 
@@ -534,6 +536,11 @@ div.main-light {
   cursor: pointer;
 }
 
+.Now-playing {
+  width: 100%;
+  min-height: 147vh;
+}
+
 .Now-playing .current-song-playing .song-playing-album-now {
   -webkit-transform: scale(2);
           transform: scale(2);
@@ -563,7 +570,6 @@ div.main-light {
 }
 
 .Now-playing .main-song-lists .song .song-details {
-  opacity: 0.9;
   scale: 1.1;
   width: 85em;
   height: 7vh;
@@ -580,11 +586,21 @@ div.main-light {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 10%;
-  background: rgba(255, 255, 255, 0.034);
+  background: #2632389f;
+  opacity: 0.9;
 }
 
 .Now-playing .main-song-lists .song .close-icon {
   z-index: 1;
+  position: relative;
+  top: 1.2em;
+  left: 1em;
+  scale: 1.5;
+}
+
+.Recent-playing {
+  width: 100%;
+  min-height: 147vh;
 }
 
 .Recent-playing .current-song-playing .song-playing-album-now {
@@ -1466,7 +1482,7 @@ div.main-light {
 
 .sigin .popupMesage {
   position: absolute;
-  top: -7em;
+  top: -13em;
   left: 3em;
   background: white;
   color: black;
@@ -1889,7 +1905,7 @@ div.main-light {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   top: 0.5em;
-  left: -4.5em;
+  left: -1em;
   font-size: 17px;
 }
 
@@ -1920,6 +1936,11 @@ div.main-light {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.User-details .user-detail .bottom-bar .column-value {
+  color: #f8b548;
+  margin-left: 1em;
 }
 
 .visualizers {

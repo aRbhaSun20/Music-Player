@@ -88,7 +88,7 @@ class SignUp extends Component {
 								type="text"
 								name="email"
 								id="Name"
-								placeholder="Blah-blah"
+								placeholder="Your Name....."
 								onChange={this.handleChange}
 							/>
 						</div>

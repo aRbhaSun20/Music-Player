@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-
 import "../Styles/index.css";
 
 import song_playing from "../Images/Icons/Song Playing.svg";
@@ -98,7 +96,7 @@ class MusicBar extends Component {
 			evnt.target.id === "likes" ||
 			evnt.target.id === "dislikes"
 		) {
-			this.props.changeDetails([evnt.target.id, this.state.index]);
+			this.props.changeDetails([evnt.target.id, this.state.index +1]);
 		}
 
 		setTimeout(() => {

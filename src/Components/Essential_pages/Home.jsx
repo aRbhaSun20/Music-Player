@@ -22,7 +22,7 @@ class Home extends Component {
 					/>
 
 					<div className="Album-Image-Section">
-						<AlbumSection element="carousal-class-to-inject"/>
+						<AlbumSection element="carousal-class-to-inject" />
 					</div>
 					<div className="feature-section">
 						<h3 className="featured">FEATURED</h3>

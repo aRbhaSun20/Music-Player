@@ -15,6 +15,7 @@ class Contact extends Component {
 		inputs: ["Name", "Email", "Phone", "Message"],
 	};
 	initialState = ["", "", "", ""];
+	
 	handleChange = (evnt) => {
 		evnt.preventDefault();
 		this.initialState[Number(evnt.target.name)] = evnt.target.value;

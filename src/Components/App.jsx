@@ -28,6 +28,7 @@ class App extends Component {
 			response: false,
 			endpoint: "localhost:4000",
 			musicData: [],
+			currentIndex: 0,
 			musicLength: 0,
 			browsemusicData: [],
 			recentmusicData: [],
@@ -44,53 +45,43 @@ class App extends Component {
 	initial = "unknown";
 
 	componentDidMount() {
-	const { endpoint } = this.state;
-	socket = socketIOClient(endpoint);
-	socket.on("FromAPI", () => console.log("connected to backend"));
-	socket.on("MusicData", (data) => {
-	console.log("music data received");
-	this.setState({ musicData: data });
-	this.setState({ musicLength: data.length });
-	});
-	socket.on("BrowseMusicData", (data) => {
-	console.log("browse data received");
-	this.setState({ browsemusicData: data });
-	});
-	socket.on("RecentMusicData", (data) => {
-	console.log("recent data received");
-	this.setState({ recentmusicData: data });
-	});
-	socket.on("currentUser", (data) => {
-	console.log("current User data received");
-	console.log(data);
-	this.setState({ userId: data[0].login_id });
-	this.setState({ userEmail: data[0].email });
-	this.setState({ userEmail: data[0].user_name });
-	});
-	socket.on("UserData", (data) => {
-	console.log("user data received");
-	this.setState({ userData: data });
-	});
+		const { endpoint } = this.state;
+		socket = socketIOClient(endpoint);
+		socket.on("FromAPI", () => console.log("connected to backend"));
+		socket.on("MusicData", (data) => {
+			this.setState({ musicData: data });
+			this.setState({ musicLength: data.length });
+		});
+		socket.on("BrowseMusicData", (data) =>
+			this.setState({ browsemusicData: data })
+		);
+		socket.on("RecentMusicData", (data) =>
+			this.setState({ recentmusicData: data })
+		);
+		socket.on("currentUser", (data) => {
+			this.setState({ userId: data[0].login_id });
+			this.setState({ userEmail: data[0].email });
+			this.setState({ userEmail: data[0].user_name });
+		});
+		socket.on("UserData", (data) => this.setState({ userData: data }));
 	}
 
-	changeTheme = (data) => {
-		this.setState({ theme: data });
-	};
+	changeTheme = (data) => this.setState({ theme: data });
 
-	nowPlaying = (data) => {
-		this.setState({ nowPlaying: data });
-	};
+	nowPlaying = (data) => this.setState({ nowPlaying: data });
 
 	currentSong = (index) => {
 		let len = this.state.musicLength;
 		if (index <= len) {
 			socket.emit("recentRead", this.state.musicData[index]);
+			this.setState({ currentIndex: index });
 			return [
 				this.state.musicData[index].song_name,
 				this.state.musicData[index].artist_name,
 			];
 		} else {
 			socket.emit("recentRead", this.state.musicData[index]);
+			this.setState({ currentIndex: len - 1 });
 			return [
 				this.state.musicData[len - 1].song_name,
 				this.state.musicData[len - 1].artist_name,
@@ -98,35 +89,29 @@ class App extends Component {
 		}
 	};
 
-	deleteSong = (data) => {
-		socket.emit("deleteData", data);
-	};
+	deleteSong = (data) => socket.emit("deleteData", data);
 
-	loginUserData = (data) => {
-		socket.emit("loginUser", data);
-	};
-	signUpUserData = (data) => {
-		socket.emit("signUpUser", data);
-	};
-	searchSongData = (data) => {
-		socket.emit("searchBrowse", data);
-	};
-	handleFeedback = (data) => {
-		socket.emit("feedbackData", data);
-	};
+	loginUserData = (data) => socket.emit("loginUser", data);
+
+	signUpUserData = (data) => socket.emit("signUpUser", data);
+
+	searchSongData = (data) => socket.emit("searchBrowse", data);
+
+	handleFeedback = (data) => socket.emit("feedbackData", data);
+
 	logOutUser = () => {
 		socket.emit("logoutUser", this.state.userId);
 		this.setState({ userEmail: this.initial });
 	};
+
 	changeDetails = (data) => {
 		if (data[0] === "favourite") {
-			data.push(this.state.musicData[data[1].favourite + 1]);
+			data.push(this.state.musicData[this.state.currentIndex].favourite + 1);
 		} else if (data[0] === "likes") {
-			data.push(this.state.musicData[data[1].likes + 1]);
+			data.push(this.state.musicData[this.state.currentIndex].likes + 1);
 		} else if (data[0] === "dislikes") {
-			data.push(this.state.musicData[data[1].dislikes + 1]);
+			data.push(this.state.musicData[this.state.currentIndex].dislikes + 1);
 		}
-		console.log(data)
 		socket.emit("changeDetails", data);
 	};
 
