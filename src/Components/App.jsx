@@ -18,9 +18,11 @@ import privacyPolicy from "./Essential_pages/privacyPolicy";
 import Userdetails from "./Essential_pages/Userdetails";
 import RecentList from "./Essential_pages/Recentlist";
 import Visualizer from "./Essential_pages/Visualizer";
+import LastPlayed from "./Essential_pages/LastPlayed";
 
 import "./Styles/index.css";
 let socket;
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +34,7 @@ class App extends Component {
 			musicLength: 0,
 			browsemusicData: [],
 			recentmusicData: [],
+			lastPlayedData: [],
 			recentLength: 0,
 			userData: [],
 			nowPlaying: false,
@@ -114,6 +117,11 @@ class App extends Component {
 		}
 		socket.emit("changeDetails", data);
 	};
+
+	lastPlayed = (data) =>
+		socket.emit("recentReceive", data, (res) =>
+			this.setState({ lastPlayedData: res.musicData })
+		);
 
 	render() {
 		return (
@@ -204,8 +212,17 @@ class App extends Component {
 									exact
 									render={() => <Userdetails details={this.state.userData} />}
 								/>
-								<Route path="/privacy" component={privacyPolicy} />
-
+								<Route path="/privacy" exact component={privacyPolicy} />
+								<Route
+									path="/lastPlayed"
+									exact
+									render={() => (
+										<LastPlayed
+											fetchlast={this.lastPlayed}
+											musicalData={this.state.lastPlayedData}
+										/>
+									)}
+								/>
 								<Route
 									path="/visualize"
 									exact

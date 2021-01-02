@@ -100,7 +100,9 @@ class Settings extends Component {
 						<div className="subtext">Your Recently played Music</div>
 						<div className="texts">Storage Location</div>
 						<div className="subtext">Internal</div>
-						<div className="texts">Delete Recommendation HIstory</div>
+						<Link to="/lastPlayed">
+							<div className="texts">Last Played Songs</div>
+						</Link>
 						<div className="texts">Delete My Library</div>
 					</div>
 					<div className="second-section-below">

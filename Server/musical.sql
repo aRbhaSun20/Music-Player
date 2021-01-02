@@ -34,6 +34,7 @@ CREATE TABLE songData(
 CREATE TABLE recentData(
   recent_id INT AUTO_INCREMENT,
   song_name VARCHAR(100) NOT NULL,
+  played_Time DATE,
   PRIMARY KEY(recent_id)
 );
 CREATE TABLE browseData(
@@ -74,6 +75,7 @@ CREATE TABLE loginData(
   loginStatus VARCHAR(5) default 'true',
   PRIMARY KEY(login_id)
 );
+
 CREATE VIEW songViewData AS
 SELECT
   song_id,
@@ -85,6 +87,7 @@ SELECT
   songData.album_id,
   album_name,
   duration,
+  favourite,
   likes,
   dislikes
 FROM
@@ -103,6 +106,7 @@ SELECT
   songData.album_id,
   album_name,
   duration,
+  favourite,
   likes,
   dislikes
 FROM
@@ -123,9 +127,10 @@ SELECT
   artist_name,
   songData.album_id,
   album_name,
-  duration,
+  duration,favourite,
   likes,
-  dislikes
+  dislikes,
+  played_Time
 FROM
   songData
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
@@ -157,7 +162,7 @@ SELECT
   artist_name,
   songData.album_id,
   album_name,
-  duration,
+  duration,favourite,
   likes,
   dislikes
 FROM
@@ -165,8 +170,8 @@ FROM
   INNER JOIN artistData ON songData.artist_id = artistData.artist_id
   INNER JOIN albumData ON songData.album_id = albumData.album_id
   INNER JOIN playlistData ON songData.playlist_id = playlistData.playlist_id;
-create view loginViewData as
-select
+CREATE view loginViewData as
+SELECT
   user_name,
   membershipStatus,
   user.email,
@@ -174,11 +179,11 @@ select
   loginTime,
   verifyEmailStatus,
   loginData.loginStatus
-from
+FROM
   loginData
-  inner join user
-where
-  user.email like loginData.email;
+  INNER JOIN user
+WHERE
+  user.email LIKE loginData.email;
 CREATE trigger toggleLoginStatus
 after
 insert
@@ -201,3 +206,4 @@ SET
 WHERE
   user.email = new.email
   AND user.password = new.password;
+

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import RecentSong from "./RecentSong";
 
 import "../Styles/index.css";

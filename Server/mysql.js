@@ -156,6 +156,19 @@ io.on("connection", (socket) => {
 		});
 	});
 
+	// search last played songs
+	socket.on("recentReceive", (data, callback) => {
+		let lastPlayed = `select * from recentViewData
+						where 
+							played_Time <= CURDATE() - ${data}`;
+		musicConnection.query(lastPlayed, (err, res) => {
+			if (err) throw err;
+			callback({
+				musicData: res,
+			});
+		});
+	});
+
 	// delete to browse/ recent/ song data
 	socket.on("deleteData", (data) => {
 		let deleteSongData = `delete from songData where song_name = '${data[0]}'`;
@@ -165,15 +178,13 @@ io.on("connection", (socket) => {
 			musicConnection.query(deleteSongData, (err) => {
 				if (err) throw err;
 			});
-        } 
-        else if (data[1] == "recent") {
+		} else if (data[1] == "recent") {
 			musicConnection.query(deleteRecentData, (err) => {
 				if (err) {
 					throw err;
 				}
 			});
-        } 
-        else if (data[1] == "browse") {
+		} else if (data[1] == "browse") {
 			musicConnection.query(deleteBrowseData, (err) => {
 				if (err) {
 					throw err;

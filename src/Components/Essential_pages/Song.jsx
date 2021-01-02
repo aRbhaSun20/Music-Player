@@ -7,10 +7,11 @@ import close_icon from "../Images/Icons/close.svg";
 
 class Song extends Component {
 
-	clickedMe = (id) => {
-		let data = [id, this.props.identify];
+	clickedMe = (name) => {
+		let data = [name, this.props.identify];
 		this.props.deleteSong(data);
 	};
+
 	render() {
 		return (
 			<div

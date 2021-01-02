@@ -27,8 +27,8 @@ class RecentSong extends Component {
 		],
 	};
 
-	clickedMe = (id) => {
-		let data = [id, this.props.identify];
+	clickedMe = (name) => {
+		let data = [name, this.props.identify];
 		this.props.deleteSong(data);
 	};
 
@@ -37,7 +37,7 @@ class RecentSong extends Component {
 			<div className="recent">
 				<div className="trigger-close">
 					<img
-						onClick={() => this.clickedMe(this.props.Songdata.song_id)}
+						onClick={() => this.clickedMe(this.props.Songdata.song_name)}
 						className="close-icon"
 						src={close_icon}
 						alt="close"

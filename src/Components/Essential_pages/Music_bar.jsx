@@ -13,11 +13,15 @@ import fullscreen_icon from "../Images/Icons/Fullscreen-now.svg";
 
 import demo from "../Songs/demo.mp3";
 import demo1 from "../Songs/demo2.mp3";
+// import song1 from "../Songs/Asal_Mein.mp3";
+// import song2 from "../Songs/Ek_Tarfa.mp3";
+// import song3 from "../Songs/Hamdard.mp3";
 
 class MusicBar extends Component {
 	state = {
 		current_playing: ["Unknown Song", "Unknown Artist"],
-		songsList: ["", demo, demo1],
+		// songsList: ["", song1, demo1, song2, song3, demo],
+		songsList: ["", demo1, demo],
 		index: 0,
 		Iconslist: [
 			favourite_icon,
@@ -96,7 +100,7 @@ class MusicBar extends Component {
 			evnt.target.id === "likes" ||
 			evnt.target.id === "dislikes"
 		) {
-			this.props.changeDetails([evnt.target.id, this.state.index +1]);
+			this.props.changeDetails([evnt.target.id, this.state.index + 1]);
 		}
 
 		setTimeout(() => {
