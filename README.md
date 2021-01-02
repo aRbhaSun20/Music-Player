@@ -70,3 +70,7 @@ Zoomable visualization with data that describes sequences of events.Click a node
 5. User Details and login Page Component
 
 ![User Details and login Page Component](Designs/user%20details%20with%20login.png)
+
+6. Last Played Music Details
+
+![User Details and login Page Component](Designs/last%20Played-month.png)
